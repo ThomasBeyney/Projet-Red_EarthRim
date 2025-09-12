@@ -32,6 +32,8 @@ func displayInfo() {
 	Player := initCharacter()
 	fmt.Println("Vos Hp actuel sont :",Player.Hp)
 	fmt.Println("Votre level actuel est :",Player.Level)
+	fmt.Println("Votre level actuel est :",Player.Level)
+
 }
 
 func main() {
