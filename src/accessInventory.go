@@ -2,19 +2,25 @@ package main
 
 import "fmt"
 
-func accessInventory(inventory []string) {
+func accessInventory(c *Character) {
 	fmt.Println("Items dans l'inventaire :")
-	for _, item := range inventory {
+	for _, item := range c.Inventory {
 		fmt.Println("-", item)
 	}
 }
 
-func main() {
-	inventory := []string{"Épée", "Potion"}
-	accessInventory(inventory)
+func takePot(c *Character) {
+	for i, item := range c.Inventory {
+		if item == "Potion" {
+			c.Inventory = append(c.Inventory[:i], c.Inventory[i+1:]...)
+			c.Hp += 50
+			if c.Hp > c.MaxHp {
+				c.Hp = c.MaxHp
+			}
+			fmt.Println("Potion utilisée !")
+			fmt.Printf("Points de vie : %d/%d\n", c.Hp, c.MaxHp)
+			return
+		}
+	}
+	fmt.Println("Aucune potion dans l'inventaire !")
 }
- func takePot() {
-
-	
- }
- 
