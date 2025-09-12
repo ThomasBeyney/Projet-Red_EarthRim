@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type Character struct {
 	Name      string
@@ -22,8 +24,14 @@ func initCharacter() Character {
 		Level:     1,
 		MaxHp:     100,
 		Hp:        40,
-		Inventory: []string{},
+		Inventory: []string{"Potion","Epée"},
 	}
+}
+
+func displayInfo() {
+	Player := initCharacter()
+	fmt.Println("Vos Hp actuel sont :",Player.Hp)
+	fmt.Println("Votre level actuel est :",Player.Level)
 }
 
 func main() {
