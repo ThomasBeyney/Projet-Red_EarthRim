@@ -1,4 +1,3 @@
-
 package main
 
 import (
@@ -20,9 +19,9 @@ func Menu() {
 
 		switch input {
 		case "1":
-			fmt.Println("Vous avez choisi d’afficher le personnage !")
+			fmt.Println("Vous avez choisi d afficher le personnage !")
 		case "2":
-			fmt.Println("Vous avez choisi de voir l’inventaire !")
+			fmt.Println("Vous avez choisi de voir l inventaire !")
 		case "3":
 			fmt.Println("Au revoir !")
 			return
