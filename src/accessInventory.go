@@ -18,7 +18,7 @@ func takePot(c *Character) {
 				c.Hp = c.MaxHp
 			}
 			fmt.Println("Potion utilisée !")
-			fmt.Printf("Points de vie : %d/%d\n", c.Hp, c.MaxHp)
+			fmt.Println("Points de vie :", c.Hp, "/", c.MaxHp)
 			return
 		}
 	}
