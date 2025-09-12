@@ -35,6 +35,5 @@ func displayInfo() {
 }
 
 func main() {
-	Player := initCharacter()
-	fmt.Println("Bienvenue", Player.Name,"tu a ",Player.Hp,"/",Player.MaxHp,"hp")
+	displayInfo()
 }
