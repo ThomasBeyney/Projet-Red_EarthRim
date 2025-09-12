@@ -28,5 +28,5 @@ func initCharacter() Character {
 
 func main() {
 	Player := initCharacter()
-	fmt.Println("Bienvenue", Player.Name)
+	fmt.Println("Bienvenue", Player.Name,"tu a ",Player.Hp,"/",Player.MaxHp,"hp")
 }
