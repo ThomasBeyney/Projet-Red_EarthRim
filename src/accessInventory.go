@@ -11,7 +11,7 @@ func accessInventory(c *Character) {
 
 func takePot(c *Character) {
 	for i, item := range c.Inventory {
-		if item == "Potion" {
+		if item == "Potion de soin" {
 			c.Inventory = append(c.Inventory[:i], c.Inventory[i+1:]...)
 			c.Hp += 50
 			if c.Hp > c.MaxHp {
@@ -26,3 +26,11 @@ func takePot(c *Character) {
 }
 
 
+func addItem(c *Character, item string) {
+	if len(c.Inventory) < 10 {
+		c.Inventory = append(c.Inventory, item)
+		fmt.Println("Vous avez ajouté :", item)
+	} else {
+		fmt.Println("Inventaire plein ! Impossible d’ajouter", item)
+	}
+}
