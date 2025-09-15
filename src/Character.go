@@ -22,7 +22,7 @@ func initCharacter() Character {
 		Level:     1,
 		MaxHp:     100,
 		Hp:        40,
-		Inventory: []string{"Potion","Epée"},
+		Inventory: []string{"Potion", "Epée"},
 	}
 }
 
