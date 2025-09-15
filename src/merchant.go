@@ -79,7 +79,7 @@ func Marchand(c *Character) {
 				}
 			}
 		case 4 :
-			fmt.Println("A bientot l'ami")
+			fmt.Println("A bientot l'ami !")
 			return
 		}
 	}
