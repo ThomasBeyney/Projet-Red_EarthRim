@@ -9,7 +9,11 @@ func poison_pot(c *Character) {
 	for i, item := range c.Inventory {
 		if item == "Potion-de-poison" {
 			c.Inventory = append(c.Inventory[:i], c.Inventory[i+1:]...)
-			c.Hp -= 30
+			c.Hp -= 10
+			time.Sleep(1 * time.Second)
+			c.Hp -= 10
+			time.Sleep(1 * time.Second)
+			c.Hp -= 10
 			if c.Hp < 0 {
 				c.Hp = 0
 			}
