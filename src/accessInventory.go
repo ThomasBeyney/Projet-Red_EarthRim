@@ -26,7 +26,7 @@ func takePot(c *Character) {
 }
 
 
-func addItem(c *Character, item string) bool {
+func AddItem(c *Character, item string) bool {
 	if len(c.Inventory) < 10 {
 		c.Inventory = append(c.Inventory, item)
 		fmt.Println("Vous avez ajouté :", item)
