@@ -12,7 +12,8 @@ func main() {
 		fmt.Println("1 - Afficher les informations du personnage")
 		fmt.Println("2 - Accéder au contenu de l'inventaire")
 		fmt.Println("3 - Utiliser une potion")
-		fmt.Println("4 - Quitter")
+		fmt.Println("4 - Marchand")
+		fmt.Println("5 - Quitter")
 		fmt.Print("Choix : ")
 		fmt.Scanln(&choice)
 
@@ -25,6 +26,8 @@ func main() {
 		case 3:
 			takePot(&player)
 		case 4:
+			Marchand(&player)
+		case 5:
 			fmt.Println("Au revoir !")
 			return
 		default:
