@@ -10,6 +10,7 @@ func Marchand(c *Character) {
 
 	if reponse == "oui" || reponse == "Oui" {
 		fmt.Println("Vous obtenez une potion")
+		c.Inventory = append(c.Inventory, "Potion")
 	} else if reponse == "non" || reponse == "Non" {
 		fmt.Println("Dommage, elle pourrait ètre utile")
 	} else {
