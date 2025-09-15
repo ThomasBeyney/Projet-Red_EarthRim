@@ -38,7 +38,7 @@ func Marchand(c *Character) {
 				fmt.Println("Et bien, ce n'était pas ma question")
 			}
 		case 3 :
-			fmt.Println("A biientot l'ami !")
+			fmt.Println("A bientot l'ami")
 			return
 		}
 	}
