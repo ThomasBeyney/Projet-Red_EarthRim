@@ -13,12 +13,15 @@ func poison_pot(c *Character) {
 			fmt.Println("Vous vous santez un peut bizzard")
 			fmt.Println("vous perdez 10 points de vie, aïe")
 			c.Hp -= 10
+			isDead(c)
 			time.Sleep(1 * time.Second)
 			fmt.Println("vous reperdez 10 points de vie")
 			c.Hp -= 10
+			isDead(c)
 			time.Sleep(1 * time.Second)
 			fmt.Println("les effets du poison disparaisse mais vous perdez encore 10 points de vie")
 			c.Hp -= 10
+			isDead(c)
 			if c.Hp < 0 {
 				c.Hp = 0
 			}
