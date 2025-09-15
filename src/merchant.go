@@ -18,8 +18,11 @@ func Marchand(c *Character) {
 			fmt.Scanln(&reponse)
 
 			if reponse == "oui" || reponse == "Oui" {
-				fmt.Println("Vous obtenez une potion")
-				c.Inventory = append(c.Inventory, "Potion")
+                if AddItem(c, "Potion") {
+                    fmt.Println("Vous obtenez une potion")
+                } else {
+                    fmt.Println("Inventaire plein ! Vous ne pouvez pas acheter.")
+				}
 			} else if reponse == "non" || reponse == "Non" {
 				fmt.Println("Dommage, elle pourrait ètre utile")
 			} else {
@@ -30,8 +33,11 @@ func Marchand(c *Character) {
 			fmt.Scanln(&reponse)
 
 			if reponse == "oui" || reponse == "Oui" {
-				fmt.Println("Vous obtenez une potion de poison")
-				c.Inventory = append(c.Inventory, "Potion-de-poison")
+                if AddItem(c, "Potion-de-poison") {
+                    fmt.Println("Vous obtenez une potion de poison")
+                } else {
+                    fmt.Println("Inventaire plein ! Vous ne pouvez pas acheter.")
+				}
 			} else if reponse == "non" || reponse == "Non" {
 				fmt.Println("Dommage, elle pourrait ètre utile, ou mortel")
 			} else {
