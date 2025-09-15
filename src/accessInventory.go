@@ -24,3 +24,5 @@ func takePot(c *Character) {
 	}
 	fmt.Println("Aucune potion dans l'inventaire !")
 }
+
+
