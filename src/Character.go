@@ -6,7 +6,7 @@ type Character struct {
 	Name      string
 	Class     string
 	Level     int
-	Skill     string
+	Skill     []string
 	MaxHp     int
 	Hp        int
 	Inventory []string
@@ -21,7 +21,7 @@ func initCharacter() Character {
 		Name:      name,
 		Class:     "Elf",
 		Level:     1,
-		Skill:     "Coup de poing",
+		Skill:     []string{"Coup de poing"},
 		MaxHp:     100,
 		Hp:        40,
 		Inventory: []string{"Potion", "Epée"},
