@@ -2,12 +2,6 @@ package main
 
 import "fmt"
 
-type Equipement struct {
-	Tete  string
-	Torse string
-	Pieds string
-}
-
 type Character struct {
 	Name      string
 	Class     string
