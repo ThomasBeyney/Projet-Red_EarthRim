@@ -14,18 +14,52 @@ type Character struct {
 	Gold      int
 }
 
-func initCharacter() Character {
+func characterCreation() Character {
 	var name string
-	fmt.Print("Quel est le nom de ton personnage ? ")
-	fmt.Scanln(&name)
+	valid := false
 
+	for !valid {
+		fmt.Print("Quel est le nom de ton personnage ? ")
+		fmt.Scanln(&name)
+
+		valid = true
+		for i := 0; i < len(name); i++ {
+			if !(name[i] >= 'A' && name[i] <= 'Z') && !(name[i] >= 'a' && name[i] <= 'z') {
+				fmt.Println("Le nom ne doit contenir que des lettres.")
+				valid = false
+				break
+			}
+		}
+	}
+
+	formattedName := ""
+	if len(name) > 0 {
+		first := name[0]
+		if first >= 'a' && first <= 'z' {
+			first = first - 32
+		}
+		formattedName += string(first)
+
+		for i := 1; i < len(name); i++ {
+			ch := name[i]
+			if ch >= 'A' && ch <= 'Z' {
+				ch = ch + 32
+			}
+			formattedName += string(ch)
+		}
+	}
+
+	return initCharacter(formattedName)
+}
+
+func initCharacter(name string) Character {
 	return Character{
 		Name:      name,
 		Class:     "Elf",
 		Level:     1,
 		Skill:     []string{"Coup de poing"},
 		MaxHp:     100,
-		Hp:        40,
+		Hp:        MaxHp/2,
 		Inventory: []string{"Potion", "Epée"},
 		Equipement: []string{},
 		Gold:      100,
