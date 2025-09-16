@@ -12,7 +12,7 @@ func initGoblin() Monster {
 		Name:      "Gobelin d'entrainement",
 		MaxHp:     40,
 		Hp:        40,
-		attaque:   5
+		attaque:   5,
 	}
 }
 
