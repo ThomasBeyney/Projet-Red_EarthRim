@@ -2,6 +2,12 @@ package main
 
 import "fmt"
 
+type Equipement struct {
+	Tete  string
+	Torse string
+	Pieds string
+}
+
 type Character struct {
 	Name      string
 	Class     string
@@ -49,12 +55,14 @@ func characterCreation() Character {
 		}
 	}
 
-	choiceClass := choixClasse()
-	return initCharacter(formattedName, choiceClass)
+	classe, PVmax, PVactuel := choixClasse()
+	return initCharacter(formattedName, classe, PVmax, PVactuel)
 }
 
-func choixClasse() string {
+func choixClasse() (string, int, int) {
 	var Classe string
+	var PVmax int
+	var PVactuel int
 	var rep int
 	valid := false
 
@@ -69,29 +77,32 @@ func choixClasse() string {
 		switch rep {
 		case 1:
 			Classe = "Humain"
+			PVmax = 100
 			valid = true
 		case 2:
 			Classe = "Elf"
+			PVmax = 80
 			valid = true
 		case 3:
 			Classe = "Nain"
+			PVmax = 120
 			valid = true
 		default:
 			fmt.Println("Choix invalide, veuillez réessayer.")
 		}
 	}
-
-	return Classe
+	PVactuel = PVmax / 2
+	return Classe, PVmax, PVactuel
 }
 
-func initCharacter(name string, Classe string) Character {
+func initCharacter(name string, Classe string, PVmax int, PVactuel int) Character {
 	return Character{
 		Name:      name,
 		Class:     Classe,
 		Level:     1,
 		Skill:     []string{"Coup de poing"},
-		MaxHp:     100,
-		Hp:        50,
+		MaxHp:     PVmax,
+		Hp:        PVactuel,
 		Inventory: []string{"Potion", "Epée"},
 		Equipement: Equipement{
 			Tete: "",
