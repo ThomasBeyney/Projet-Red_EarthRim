@@ -11,7 +11,7 @@ type Character struct {
 	Hp        int
 	Inventory []string
 	InventoryMax int
-	limInvetory int
+	limInventory int
 	Equipement Equipement
 	Gold      int
 }
@@ -101,7 +101,7 @@ func initCharacter(name string, Classe string, PVmax int, PVactuel int) Characte
 		Hp:        PVactuel,
 		Inventory: []string{"Potion", "Epée"},
 		InventoryMax: 10,
-		limInvetory: 0,
+		limInventory: 0,
 		Equipement: Equipement{
 			Tete: "",
 			Torse: "",
