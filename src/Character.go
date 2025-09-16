@@ -10,7 +10,7 @@ type Character struct {
 	MaxHp     int
 	Hp        int
 	Inventory []string
-	Equipement []string
+	Equipement Equipement
 	Gold      int
 }
 
@@ -49,19 +49,55 @@ func characterCreation() Character {
 		}
 	}
 
-	return initCharacter(formattedName)
+	choiceClass := choixClasse()
+	return initCharacter(formattedName, choiceClass)
 }
 
-func initCharacter(name string) Character {
+func choixClasse() string {
+	var Classe string
+	var rep int
+	valid := false
+
+	for !valid {
+		fmt.Println("Quelle classe choisissez vous ?")
+		fmt.Println("1- Humain")
+		fmt.Println("2- Elf")
+		fmt.Println("3- Nain")
+		fmt.Print("Choix : ")
+		fmt.Scanln(&rep)
+
+		switch rep {
+		case 1:
+			Classe = "Humain"
+			valid = true
+		case 2:
+			Classe = "Elf"
+			valid = true
+		case 3:
+			Classe = "Nain"
+			valid = true
+		default:
+			fmt.Println("Choix invalide, veuillez réessayer.")
+		}
+	}
+
+	return Classe
+}
+
+func initCharacter(name string, Classe string) Character {
 	return Character{
 		Name:      name,
-		Class:     "Elf",
+		Class:     Classe,
 		Level:     1,
 		Skill:     []string{"Coup de poing"},
 		MaxHp:     100,
 		Hp:        50,
 		Inventory: []string{"Potion", "Epée"},
-		Equipement: []string{},
+		Equipement: Equipement{
+			Tete: "",
+			Torse: "",
+			Pieds: "",
+		},
 		Gold:      100,
 	}
 }
