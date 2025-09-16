@@ -78,5 +78,5 @@ func Forgeron(c *Character) {
 			fmt.Println("A bientot l'ami")
 			return
 		}
-	
+	}
 
