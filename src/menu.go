@@ -83,7 +83,7 @@ func main() {
 		case 5:
 			Marchand(&player)
 		case 6:
-			goblinPattern(&player)
+			goblinPattern(&goblin, &player)
 		case 7:
 			fmt.Println("Au revoir !")
 			return
