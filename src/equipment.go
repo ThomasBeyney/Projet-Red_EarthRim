@@ -1,22 +1,69 @@
 package main 
 
-type Equipment struct {
+import "fmt"
+
+type Equipement struct {
     Tete   string 
     Torse  string 
     Pieds  string 
 }
 
-func Equip(c *Character) {
+func EquipHat(c *Character) {
 	for i, item := range c.Inventory {
-		switch item {
-		case "Chapeau de l'aventurier":
-			if c.Equipment.Head != "" {
-				c.Inventory = append(c.Inventory, c.Equipment.Head)
+		if item == "Chapeau de l’aventurier" {
+			if c.Equipement.Tete != "" {
+				c.Inventory = append(c.Inventory, c.Equipement.Tete)
 			}
 			c.Inventory = append(c.Inventory[:i], c.Inventory[i+1:]...)
-			// Équipe le nouvel objet et ajoute bonus HP
-			c.Equipment.Head = item
+			c.Equipement.Tete = item
 			c.MaxHp += 10
-			fmt.Println("Chapeau de l'aventurier équipé !")
-			fmt.Println("Les points de vie max ont augmenté :", c.Hp, "/", c.MaxHp)
+
+			fmt.Println("Chapeau de l’aventurier équipé !")
+			fmt.Println("Les points de vie max sont maintenant :", c.Hp, "/", c.MaxHp)
 			return
+		}
+	}
+
+	fmt.Println("Aucun chapeau à équiper dans l'inventaire !")
+}
+
+
+func EquipTors(c *Character) {
+	for i, item := range c.Inventory {
+		if item == "" {
+			if c.Equipement.Torse != "Tunique de l’aventurier" {
+				c.Inventory = append(c.Inventory, c.Equipement.Torse)
+			}
+			c.Inventory = append(c.Inventory[:i], c.Inventory[i+1:]...)
+			c.Equipement.Torse = item
+			c.MaxHp += 25
+
+			fmt.Println("Tunique de l’aventurier équipé !")
+			fmt.Println("Les points de vie max sont maintenant :", c.Hp, "/", c.MaxHp)
+			return
+		}
+	}
+
+	fmt.Println("Aucune tunique à équiper dans l'inventaire !")
+}
+
+
+
+func EquipPie(c *Character) {
+	for i, item := range c.Inventory {
+		if item == "" {
+			if c.Equipement.Pieds != "Bottes de l’aventurier" {
+				c.Inventory = append(c.Inventory, c.Equipement.Pieds)
+			}
+			c.Inventory = append(c.Inventory[:i], c.Inventory[i+1:]...)
+			c.Equipement.Pieds = item
+			c.MaxHp += 25
+
+			fmt.Println("Bottes de l’aventurier équipé !")
+			fmt.Println("Les points de vie max sont maintenant :", c.Hp, "/", c.MaxHp)
+			return
+		}
+	}
+
+	fmt.Println("Aucune bottes à équiper dans l'inventaire !")
+}
