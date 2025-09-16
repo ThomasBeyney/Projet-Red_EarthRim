@@ -27,12 +27,25 @@ func takePot(c *Character) {
 
 
 func AddItem(c *Character, item string) bool {
-	if len(c.Inventory) < 10 {
+	if len(c.Inventory) < c.InventoryMax {
 		c.Inventory = append(c.Inventory, item)
 		fmt.Println("Vous avez ajouté :", item)
 		return true
 	} else {
-		fmt.Println("Inventaire plein ! Impossible d’ajouter", item)
+		fmt.Println("Inventaire plein ! Impossible d'ajouter", item)
 		return false
+	}
+}
+
+
+
+func upgradeInventorySlot(c *Character) {
+	if c.LimInventory < 3 {
+		c.InventoryMax += 10
+		c.LimInventory++
+		fmt.Println("Capacité d'inventaire augmentée de +10 !")
+		fmt.Println("Nouvelle capacité max :", c.InventoryMax)
+	} else {
+		fmt.Println("Vous avez déjà atteint le nombre maximum d'augmentations.")
 	}
 }
