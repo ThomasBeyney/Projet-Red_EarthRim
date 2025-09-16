@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func main() {
-	player := initCharacter()
+	player := initCharacter(name string)
 	fmt.Println("Bienvenue", player.Name, "tu as", player.Hp, "/", player.MaxHp, "hp")
 
 	var choice int
