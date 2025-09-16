@@ -16,7 +16,7 @@ func Forgeron(c *Character) {
 		fmt.Scanln(&rep)
 		switch rep {
 		case 1 :
-			fmt.Print("Voulez vous vraiment fabriquer le chapeau de l’aventurier  ?  oui/non ")
+			fmt.Print("Voulez vous vraiment fabriquer le chapeau de l’aventurier (pour 5 piece d'or) ?  oui/non ")
 			fmt.Scanln(&reponse)
 
 			if reponse == "oui" || reponse == "Oui" {
@@ -36,7 +36,7 @@ func Forgeron(c *Character) {
 				fmt.Println("Et bien, ce n'était pas ma question")
 			}
 		case 2 :
-			fmt.Print("Voulait vous vraiment fabriquer la tunique de l’aventurier ? oui/non ")
+			fmt.Print("Voulait vous vraiment fabriquer la tunique de l’aventurier (pour 5 pièce d'or) ? oui/non ")
 			fmt.Scanln(&reponse)
 
 			if reponse == "oui" || reponse == "Oui" {
@@ -56,7 +56,7 @@ func Forgeron(c *Character) {
 				fmt.Println("Et bien, ce n'était pas ma question")
 			}
 		case 3 :
-			fmt.Print("Voulait vous vraiment fabriquer les bottes de l’aventurier ? oui/non ")
+			fmt.Print("Voulait vous vraiment fabriquer les bottes de l’aventurier (pour 5 piece d'or) ? oui/non ")
 			fmt.Scanln(&reponse)
 
 			if reponse == "oui" || reponse == "Oui" {
