@@ -16,5 +16,3 @@ func initGoblin() Monster {
 	}
 }
 
-
-func gobelinPattern()
