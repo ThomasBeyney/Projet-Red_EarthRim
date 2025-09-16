@@ -16,7 +16,7 @@ func Forgeron(c *Character) {
 		fmt.Scanln(&rep)
 		switch rep {
 		case 1 :
-			fmt.Print("Voulait vous vraiment fabriquer le chapeau de l’aventurier  ?  oui/non ")
+			fmt.Print("Voulez vous vraiment fabriquer le chapeau de l’aventurier  ?  oui/non ")
 			fmt.Scanln(&reponse)
 
 			if reponse == "oui" || reponse == "Oui" {
@@ -60,15 +60,16 @@ func Forgeron(c *Character) {
 			fmt.Scanln(&reponse)
 
 			if reponse == "oui" || reponse == "Oui" {
-                if AddItem(c, "Bottes de l’aventurier") {
+				if c.Gold >= 5 {
+                   if AddItem(c, "Bottes de l’aventurier") {
 					fmt.Println("Vous payer 5 d'or")
                     fmt.Println("Vous obtenez les bottes de l’aventurier")
 					c.Gold -= 5
-                } else {
+                   } else {
                     fmt.Println("Inventaire plein ! Vous ne pouvez pas les fabriquer.")
-				}} else {
+				   }} else {
 						fmt.Println("Vous n'avez pas assez d'or")
-			    }
+			       }
 			} else if reponse == "non" || reponse == "Non" {
 				fmt.Println("Dommage, elle pourrait vous ètre utiles")
 			} else {
@@ -79,3 +80,4 @@ func Forgeron(c *Character) {
 			return
 		}
 	}
+}
