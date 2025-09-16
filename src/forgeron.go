@@ -30,7 +30,7 @@ func Forgeron(c *Character) {
 				}} else {
 					fmt.Println("Vous n'avez pas assez d'or")
 				}
-				}  
+			}  
 			} else if reponse == "non" || reponse == "Non" {
 				fmt.Println("Dommage, il pourrait vous ètre utile")
 			} else {
@@ -50,7 +50,7 @@ func Forgeron(c *Character) {
                     fmt.Println("Inventaire plein ! Vous ne pouvez pas la fabriquer.")
 				   }} else {
 						fmt.Println("Vous n'avez pas assez d'or")
-				   }
+			    }
 			} else if reponse == "non" || reponse == "Non" {
 				fmt.Println("Dommage, elle pourrait vous ètre utile")
 			} else {
@@ -81,4 +81,3 @@ func Forgeron(c *Character) {
 		}
 	}
 }
-h
