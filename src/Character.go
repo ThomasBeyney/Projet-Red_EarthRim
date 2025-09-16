@@ -10,6 +10,8 @@ type Character struct {
 	MaxHp     int
 	Hp        int
 	Inventory []string
+	InventoryMax int
+	limInvetory int
 	Equipement Equipement
 	Gold      int
 }
@@ -98,6 +100,8 @@ func initCharacter(name string, Classe string, PVmax int, PVactuel int) Characte
 		MaxHp:     PVmax,
 		Hp:        PVactuel,
 		Inventory: []string{"Potion", "Epée"},
+		InventoryMax: 10,
+		limInvetory: 0,
 		Equipement: Equipement{
 			Tete: "",
 			Torse: "",
@@ -115,6 +119,7 @@ func displayInfo(c *Character) {
 	fmt.Println("Sort actuel :", c.Skill)
 	fmt.Println("Points de vie :", c.Hp, "/", c.MaxHp)
 	fmt.Println("Inventaire :", c.Inventory)
+	fmt.Println("Equipement ;",c.Equipement, ",")
 	fmt.Println("Gold :", c.Gold)
 	fmt.Println("--------------------------")
 }
