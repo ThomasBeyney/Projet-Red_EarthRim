@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func Marchand(c *Character) {
+func Forgeron(c *Character) {
 	fmt.Println("Bienvenue chez le Forgeron")
 	var rep int
 	var reponse string
