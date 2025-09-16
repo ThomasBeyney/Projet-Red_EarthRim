@@ -16,30 +16,40 @@ func Marchand(c *Character) {
 		fmt.Scanln(&rep)
 		switch rep {
 		case 1 :
-			fmt.Print("Voulait vous vraiment achetez une potion de soin ?  oui/non ")
+			fmt.Print("Voulait vous vraiment achetez une potion de soin ? (coute 3 d'or)  oui/non ")
 			fmt.Scanln(&reponse)
 
 			if reponse == "oui" || reponse == "Oui" {
-                if AddItem(c, "Potion") {
-                    fmt.Println("Vous obtenez une potion")
-                } else {
-                    fmt.Println("Inventaire plein ! Vous ne pouvez pas acheter.")
-				}
+				if c.Gold >= 3 {
+					if AddItem(c, "Potion") {
+						fmt.Println("Vous payer 3 d'or")
+						fmt.Println("Vous obtenez une potion")
+						c.Gold -= 3
+					} else {
+						fmt.Println("Inventaire plein ! Vous ne pouvez pas acheter.")
+					}} else {
+						fmt.Println("Vous n'avez pas assez d'or")
+					}
 			} else if reponse == "non" || reponse == "Non" {
 				fmt.Println("Dommage, elle pourrait ètre utile")
 			} else {
 				fmt.Println("Et bien, ce n'était pas ma question")
 			}
 		case 2 :
-			fmt.Print("Voulait vous vraiment achetez une potion de poison ? oui/non ")
+			fmt.Print("Voulait vous vraiment achetez une potion de poison ? (coute 6 d'or) oui/non ")
 			fmt.Scanln(&reponse)
 
 			if reponse == "oui" || reponse == "Oui" {
-                if AddItem(c, "Potion-de-poison") {
-                    fmt.Println("Vous obtenez une potion de poison")
-                } else {
-                    fmt.Println("Inventaire plein ! Vous ne pouvez pas acheter.")
-				}
+                if c.Gold >= 6 {
+					if AddItem(c, "Potion-de-poison") {
+						fmt.Println("Vous payer 6 d'or")
+						fmt.Println("Vous obtenez une potion de poison")
+						c.Gold -= 6
+					} else {
+						fmt.Println("Inventaire plein ! Vous ne pouvez pas acheter.")
+					}} else {
+						fmt.Println("Vous n'avez pas assez d'or")
+					}
 			} else if reponse == "non" || reponse == "Non" {
 				fmt.Println("Dommage, elle pourrait ètre utile, ou mortel")
 			} else {
@@ -55,15 +65,20 @@ func Marchand(c *Character) {
 
 			switch rep2 {
 				case 1:
-					fmt.Print("Voulez-vous vraiment acheter le livre de boule de feu ? oui/non ")
+					fmt.Print("Voulez-vous vraiment acheter le livre de boule de feu ? (coute 25 d'or) oui/non ")
 					fmt.Scanln(&reponse)
 
 					if reponse == "oui" || reponse == "Oui" {
-						if AddItem(c, "Livre de boule de feu") {
-							fmt.Println("Vous obtenez un Livre de boule de feu")
-						} else {
-							fmt.Println("Inventaire plein ! Vous ne pouvez pas acheter.")
-						}
+						if c.Gold >= 25 {
+							if AddItem(c, "Livre de boule de feu") {
+								fmt.Println("Vous payer 25 d'or")
+								fmt.Println("Vous obtenez un Livre de boule de feu")
+								c.Gold -= 25
+							} else {
+								fmt.Println("Inventaire plein ! Vous ne pouvez pas acheter.")
+							}} else { 
+								fmt.Println("Vous n'avez pas assez d'or")
+							}
 					} else if reponse == "non" || reponse == "Non" {
 						fmt.Println("Dommage, il pourrait s'avérer très utile.")
 					} else {
