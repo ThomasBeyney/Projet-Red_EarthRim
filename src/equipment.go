@@ -30,8 +30,8 @@ func EquipHat(c *Character) {
 
 func EquipTors(c *Character) {
 	for i, item := range c.Inventory {
-		if item == "" {
-			if c.Equipement.Torse != "Tunique de l’aventurier" {
+		if item == "Tunique de l’aventurier" {
+			if c.Equipement.Torse != "" {
 				c.Inventory = append(c.Inventory, c.Equipement.Torse)
 			}
 			c.Inventory = append(c.Inventory[:i], c.Inventory[i+1:]...)
@@ -51,13 +51,13 @@ func EquipTors(c *Character) {
 
 func EquipPie(c *Character) {
 	for i, item := range c.Inventory {
-		if item == "" {
-			if c.Equipement.Pieds != "Bottes de l’aventurier" {
+		if item == "Bottes de l’aventurier" {
+			if c.Equipement.Pieds != "" {
 				c.Inventory = append(c.Inventory, c.Equipement.Pieds)
 			}
 			c.Inventory = append(c.Inventory[:i], c.Inventory[i+1:]...)
 			c.Equipement.Pieds = item
-			c.MaxHp += 25
+			c.MaxHp += 15
 
 			fmt.Println("Bottes de l’aventurier équipé !")
 			fmt.Println("Les points de vie max sont maintenant :", c.Hp, "/", c.MaxHp)
