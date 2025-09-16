@@ -14,7 +14,8 @@ func main() {
 		fmt.Println("3 - Utiliser un objet")
 		fmt.Println("4 - Forgeron")
 		fmt.Println("5 - Marchand")
-		fmt.Println("6 - Quitter")
+		fmt.Println("6 - Combat")
+		fmt.Println("7 - Quitter")
 		fmt.Print("Choix : ")
 		fmt.Scanln(&choice)
 
