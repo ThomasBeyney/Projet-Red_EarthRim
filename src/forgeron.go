@@ -7,7 +7,7 @@ func Forgeron(c *Character) {
 	var rep int
 	var reponse string
 	for {
-		fmt.Println("Que shouatait vous fabriquer ?")
+		fmt.Println("Que souhaiter vous fabriquer ?")
 		fmt.Println("1- Le chapeau de l’aventurier ?")
 		fmt.Println("2- La tunique de l’aventurier?")
 		fmt.Println("3- Les bottes de l’aventurier")
@@ -79,4 +79,3 @@ func Forgeron(c *Character) {
 			return
 		}
 	}
-
