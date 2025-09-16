@@ -61,7 +61,7 @@ func main() {
         switch selectedItem {
         case "Potion":
             takePot(&player)
-        case "Potion de poison":
+        case "Potion-de-poison":
             poison_pot(&player)
 		case "Livre de boule de feu": 
 			Spellbook(&player)
