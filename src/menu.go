@@ -71,6 +71,8 @@ func main() {
 			EquipTors(&player)
 		case "Bottes de l’aventurier":
 			EquipPie(&player)
+		case "Grand sac":
+			upgradeInventorySlot(&player)
         default:
             fmt.Println("Cet objet ne peut pas être utilisé.")
         }
