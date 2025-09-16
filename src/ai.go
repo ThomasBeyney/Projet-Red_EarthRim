@@ -17,8 +17,8 @@ func goblinPattern(goblin *Monster, player *Character) {
 
 		}
 
-		fmt.Println(goblin.Name," inflige à ",player.Name," ",damage," de dégâts\n")
-		fmt.Println("PV de ",player.Name," : ",player.Hp,"/",player.MaxHp,"\n\n")
+		fmt.Println(goblin.Name,"inflige à",player.Name,damage,"points de dégâts\n")
+		fmt.Println("PV de",player.Name,":",player.Hp,"/",player.MaxHp,"\n\n")
 
 		if player.Hp == 0 {
 			fmt.Println(player.Name," est K.O.\n")
