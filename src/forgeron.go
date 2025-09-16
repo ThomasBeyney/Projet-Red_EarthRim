@@ -21,16 +21,15 @@ func Forgeron(c *Character) {
 
 			if reponse == "oui" || reponse == "Oui" {
 			    if c.Gold >= 5 {
-                if AddItem(c, "Chapeau de l’aventurier") {
-					fmt.Println("Vous payer 5 d'or")
-                    fmt.Println("Vous obtenez le chapeau de l’aventurier")
-					c.Gold -= 5
-                } else {
-                    fmt.Println("Inventaire plein ! Vous ne pouvez pas le fabriquer.")
-				}} else {
-					fmt.Println("Vous n'avez pas assez d'or")
-				}
-			}  
+                	if AddItem(c, "Chapeau de l’aventurier") {
+				    	fmt.Println("Vous payer 5 d'or")
+                        fmt.Println("Vous obtenez le chapeau de l’aventurier")
+					    c.Gold -= 5
+                    } else {
+                       fmt.Println("Inventaire plein ! Vous ne pouvez pas le fabriquer.")
+				    }} else {
+					    fmt.Println("Vous n'avez pas assez d'or")
+			     	}  
 			} else if reponse == "non" || reponse == "Non" {
 				fmt.Println("Dommage, il pourrait vous ètre utile")
 			} else {
@@ -49,8 +48,8 @@ func Forgeron(c *Character) {
                    } else {
                     fmt.Println("Inventaire plein ! Vous ne pouvez pas la fabriquer.")
 				   }} else {
-						fmt.Println("Vous n'avez pas assez d'or")
-			    }
+                       fmt.Println("Vous n'avez pas assez d'or")
+			       }
 			} else if reponse == "non" || reponse == "Non" {
 				fmt.Println("Dommage, elle pourrait vous ètre utile")
 			} else {
@@ -79,5 +78,5 @@ func Forgeron(c *Character) {
 			fmt.Println("A bientot l'ami")
 			return
 		}
-	}
-}
+	
+
