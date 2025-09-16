@@ -82,6 +82,8 @@ func main() {
 		case 5:
 			Marchand(&player)
 		case 6:
+			goblinPattern(&player)
+		case 7:
 			fmt.Println("Au revoir !")
 			return
 		default:
