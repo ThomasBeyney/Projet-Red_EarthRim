@@ -59,7 +59,7 @@ func initCharacter(name string) Character {
 		Level:     1,
 		Skill:     []string{"Coup de poing"},
 		MaxHp:     100,
-		Hp:        MaxHp/2,
+		Hp:        50,
 		Inventory: []string{"Potion", "Epée"},
 		Equipement: []string{},
 		Gold:      100,
