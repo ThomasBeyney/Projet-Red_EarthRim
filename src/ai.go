@@ -14,13 +14,15 @@ func goblinPattern(goblin *Monster, player *Character) {
 		player.Hp -= damage
 		if player.Hp < 0 {
 			player.Hp = 0
+
 		}
 
-		fmt.Printf("%s inflige à %s %d de dégâts\n", goblin.Name, player.Name, damage)
-		fmt.Printf("PV de %s : %d/%d\n\n", player.Name, player.Hp, player.MaxHp)
+		fmt.Println(goblin.Name," inflige à ",player.Name," ",damage," de dégâts\n")
+		fmt.Println("PV de ",player.Name," : ",player.Hp,"/",player.MaxHp,"\n\n")
 
 		if player.Hp == 0 {
-			fmt.Printf("%s est K.O.\n", player.Name)
+			fmt.Println(player.Name," est K.O.\n")
+			isDead(player)
 			break
 		}
 	}
