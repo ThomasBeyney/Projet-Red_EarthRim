@@ -40,12 +40,21 @@ func AddItem(c *Character, item string) bool {
 
 
 func upgradeInventorySlot(c *Character) {
-	if c.LimInventory < 3 {
-		c.InventoryMax += 10
-		c.LimInventory++
-		fmt.Println("Capacité d'inventaire augmentée de +10 !")
-		fmt.Println("Nouvelle capacité max :", c.InventoryMax)
-	} else {
-		fmt.Println("Vous avez déjà atteint le nombre maximum d'augmentations.")
-	}
+    if c.LimInventory >= 3 {
+        fmt.Println("Vous avez déjà atteint le nombre maximum d'augmentations.")
+        return
+    }
+
+    for i, item := range c.Inventory {
+        if item == "Grand sac" {
+            c.Inventory = append(c.Inventory[:i], c.Inventory[i+1:]...)
+            c.InventoryMax += 10
+            c.LimInventory++
+            fmt.Println("Capacité d'inventaire augmentée de +10 !")
+            fmt.Println("Nouvelle capacité max :", c.InventoryMax)
+            return
+        }
+    }
+
+    fmt.Println("Aucun 'Grand sac' trouvé dans votre inventaire.")
 }
