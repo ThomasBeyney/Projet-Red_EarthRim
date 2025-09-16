@@ -65,6 +65,12 @@ func main() {
             poison_pot(&player)
 		case "Livre de boule de feu": 
 			Spellbook(&player)
+		case "Chapeau de l’aventurier":
+			EquipHat(&player)
+		case "Tunique de l’aventurier":
+			EquipTors(&player)
+		case "Bottes de l’aventurier":
+			EquipPie(&player)
         default:
             fmt.Println("Cet objet ne peut pas être utilisé.")
         }
