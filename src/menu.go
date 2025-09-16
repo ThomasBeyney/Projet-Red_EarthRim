@@ -4,6 +4,7 @@ import "fmt"
 
 func main() {
 	player := characterCreation()
+	goblin := initGoblin()
 	fmt.Println("Bienvenue", player.Name, "tu as", player.Hp, "/", player.MaxHp, "hp")
 
 	var choice int
