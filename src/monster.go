@@ -15,3 +15,6 @@ func initGoblin() Monster {
 		attaque:   5
 	}
 }
+
+
+func gobelinPattern()
