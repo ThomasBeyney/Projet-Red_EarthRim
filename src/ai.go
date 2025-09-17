@@ -11,28 +11,26 @@ func goblinPattern(goblin *Monster, player *Character) {
 		var damage int
 		if turn%3 == 0 {
 			damage = goblin.attaque * 2
-			CharacterTurn(goblin, player)
+			fmt.Println(goblin.Name, "utilise une attaque puissante !")
 		} else {
 			damage = goblin.attaque
-			CharacterTurn(goblin, player)
 		}
+
 
 		player.Hp -= damage
 		if player.Hp < 0 {
 			player.Hp = 0
-
 		}
 
-		fmt.Println(goblin.Name,"inflige à",player.Name,damage,"points de dégâts\n")
-		time.Sleep(1 * time.Second)
-		fmt.Println("PV de",player.Name,":",player.Hp,"/",player.MaxHp,"\n\n")
+		fmt.Println(goblin.Name, "inflige", damage, "dégâts à", player.Name)
+		fmt.Println("PV de", player.Name, ":", player.Hp, "/", player.MaxHp)
 		time.Sleep(1 * time.Second)
 
 		if player.Hp == 0 {
+			fmt.Println(player.Name, "est K.O.")
 			time.Sleep(1 * time.Second)
-			fmt.Println(player.Name," est K.O.\n")
 			isDead(player)
-			break
 		}
+	CharacterTurn(goblin, player)
 	}
 }
