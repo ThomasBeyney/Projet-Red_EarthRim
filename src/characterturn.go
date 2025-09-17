@@ -38,7 +38,6 @@ func CharacterTurn(goblin *Monster, player *Character) {
         			return
     			}
 
-    			goblinPattern(goblin, player)
 
     			if player.Hp == 0 {
         			return
@@ -106,5 +105,6 @@ func CharacterTurn(goblin *Monster, player *Character) {
 				fmt.Println("Choix invalide, veuillez réessayer.")
 			}
 		}
+	goblinPattern(goblin, player)
 	}
 }
