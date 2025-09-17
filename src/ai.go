@@ -106,7 +106,7 @@ func loupPattern(Loup *Monster, player *Character) {
 		}
 
 		player.Turn += 1
-		CombLoup(Loup, player)
+		CharacterTurn(Loup, player)
 	}
 }
 
@@ -142,6 +142,6 @@ func orcPattern(Orc *Monster, player *Character) {
 		}
 
 		player.Turn += 1
-		CombOrc(Orc, player)
+		CharacterTurn(Orc, player)
 	}
 }
