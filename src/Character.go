@@ -15,6 +15,7 @@ type Character struct {
 	LimInventory int
 	Equipement Equipement
 	Gold      int
+	Turn      int
 }
 
 func characterCreation() Character {
@@ -110,6 +111,7 @@ func initCharacter(name string, Classe string, PVmax int, PVactuel int) Characte
 			Pieds: "",
 		},
 		Gold:      100,
+		Turn:      1,
 	}
 }
 
