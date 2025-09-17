@@ -6,33 +6,27 @@ import (
 )
 
 
-func goblinPattern(goblin *Monster, player *Character) {
-	for turn := 1; player.Hp > 0; turn++ {
-		var damage int
-		if turn%3 == 0 {
-			damage = goblin.attaque * 2
-			CharacterTurn(goblin, player)
-		} else {
-			damage = goblin.attaque
-			CharacterTurn(goblin, player)
-		}
+func goblinPattern(goblin Monster, playerCharacter) {
+	var damage int
+	if goblin.Turn%3 == 0 {
+		damage = goblin.attaque * 2
+		fmt.Println(goblin.Name, "utilise une attaque puissante !")
+	} else {
+		damage = goblin.attaque
+	}
 
-		player.Hp -= damage
-		if player.Hp < 0 {
-			player.Hp = 0
+	goblin.Turn++
 
-		}
+	player.Hp -= damage
+	if player.Hp < 0 {
+		player.Hp = 0
+	}
 
-		fmt.Println(goblin.Name,"inflige à",player.Name,damage,"points de dégâts\n")
-		time.Sleep(1 * time.Second)
-		fmt.Println("PV de",player.Name,":",player.Hp,"/",player.MaxHp,"\n\n")
-		time.Sleep(1 * time.Second)
+	fmt.Println(goblin.Name, "inflige", damage, "dégâts à", player.Name)
+	fmt.Println("PV de", player.Name, ":", player.Hp, "/", player.MaxHp)
 
-		if player.Hp == 0 {
-			time.Sleep(1 * time.Second)
-			fmt.Println(player.Name," est K.O.\n")
-			isDead(player)
-			break
-		}
+	if player.Hp == 0 {
+		fmt.Println(player.Name, "est K.O.")
+		isDead(player)
 	}
 }
