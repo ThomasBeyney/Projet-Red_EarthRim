@@ -4,24 +4,19 @@ import "fmt"
 
 
 func CharacterTurn(goblin *Monster, player *Character) {
-	for {
-        if player.Hp <= 0 || goblin.Hp <= 0 {
-            break
-        }
+	
+	
+	for player.Hp > 0 && goblin.Hp > 0 {
+    	var choice int
+    	fmt.Println("\n=== Interface de combat ===")
+    	fmt.Println("1 - Statistique")
+   		fmt.Println("2 - Attaquer")
+    	fmt.Println("3 - Inventaire")
+    	fmt.Println("4 - Quitter")
+    	fmt.Print("Choix : ")
+    	fmt.Scanln(&choice)
 
-
-		var choice int
-		for {
-			fmt.Println("\n=== Interface de combat ===")
-			fmt.Println("C'est à votre tour, choisissez ce que vous souhaitez faire :")
-			fmt.Println("1 - Statistique")
-			fmt.Println("2 - Attaquer")
-			fmt.Println("3 - Inventaire")
-			fmt.Println("4 - Quitter")
-			fmt.Print("Choix : ")
-			fmt.Scanln(&choice)
-
-			switch choice {
+		switch choice {
 			case 1:
 				displayInfo(player)
 
@@ -106,6 +101,5 @@ func CharacterTurn(goblin *Monster, player *Character) {
 				fmt.Println("Choix invalide, veuillez réessayer.")
 			}
 		}
-	goblinPattern(goblin, player)
-	}
+	//goblinPattern(goblin, player)
 }
