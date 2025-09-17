@@ -3,9 +3,11 @@ package main
 import "fmt"
 
 func Spellbook(c *Character) {
-	if c.Skillmax > 1 {
-		fmt.Println("vous avez déja appris ce sort")
-		return
+	for _, skill := range c.Skill {
+		if skill == "Boule de feu" {
+			fmt.Println("Vous avez déja appris ce sort")
+			return
+		}
 	}
 	for i, item := range c.Inventory {
 		if item == "Livre de boule de feu" {
