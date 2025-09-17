@@ -8,6 +8,11 @@ import (
 
 func goblinPattern(goblin *Monster, player *Character) {
 	for turn := 1; player.Hp > 0; turn++ {
+		if goblin.Hp <= 0 {
+			fmt.Println("Le gobelin est vaincu !")
+			return
+		}
+
 		var damage int
 		if turn%3 == 0 {
 			damage = goblin.attaque * 2
@@ -15,7 +20,6 @@ func goblinPattern(goblin *Monster, player *Character) {
 		} else {
 			damage = goblin.attaque
 		}
-
 
 		player.Hp -= damage
 		if player.Hp < 0 {
@@ -30,7 +34,9 @@ func goblinPattern(goblin *Monster, player *Character) {
 			fmt.Println(player.Name, "est K.O.")
 			time.Sleep(1 * time.Second)
 			isDead(player)
+			return
 		}
-	CharacterTurn(goblin, player)
+
+		CharacterTurn(goblin, player)
 	}
 }
