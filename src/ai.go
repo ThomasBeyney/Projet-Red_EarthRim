@@ -13,7 +13,7 @@ func goblinPattern(goblin *Monster, player *Character) {
 		}
 
 		var damage int
-		if turn%3 == 0 {
+		if player.Turn%3 == 0 {
 			damage = goblin.attaque * 2
 			fmt.Println(goblin.Name, "utilise une attaque puissante !")
 		} else {
@@ -36,6 +36,7 @@ func goblinPattern(goblin *Monster, player *Character) {
 			return
 		}
 
+		player.Turn += 1
 		CharacterTurn(goblin, player)
 	}
 }
