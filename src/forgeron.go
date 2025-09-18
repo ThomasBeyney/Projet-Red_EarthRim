@@ -81,7 +81,20 @@ func Forgeron(c *Character) {
 						break
 					}
 				}
-				if FourrureIndex == -1 && FourrureIndex == 0 {
+				if FourrureIndex == -1 {
+					fmt.Println("Vous n'avez pas suffisement de fourrure de loup pour fabriquer cette tunique !")
+					break
+				}
+				c.Inventory = append(c.Inventory[:FourrureIndex], c.Inventory[FourrureIndex+1:]...)
+				fmt.Println("Fourrure de loup utilisée !")
+
+				for i, item := range c.Inventory {
+					if item == "Fourrure de loup" {
+						FourrureIndex = i
+						break
+					}
+				}
+				if FourrureIndex == -1 {
 					fmt.Println("Vous n'avez pas suffisement de fourrure de loup pour fabriquer cette tunique !")
 					break
 				}
