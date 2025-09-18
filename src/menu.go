@@ -112,7 +112,6 @@ func main() {
         }
         }
 
-	}
 		case 7:
 			fmt.Println("Au revoir !")
 			return
@@ -120,4 +119,4 @@ func main() {
 			fmt.Println("Choix invalide, veuillez réessayer.")
 		}
 	}
-
+}
