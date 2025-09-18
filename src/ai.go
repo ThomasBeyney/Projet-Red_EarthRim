@@ -72,7 +72,9 @@ func trollPattern(Troll *Monster, player *Character) {
 		}
 
 		player.Turn += 1
-		CombTroll(Troll, player)
+		if !CombTroll(Troll, player){
+			return
+		}
 	}
 }
 
