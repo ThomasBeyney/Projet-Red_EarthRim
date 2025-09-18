@@ -175,4 +175,3 @@ func Forgeron(c *Character) {
 		}
 	}
 }
-ff
