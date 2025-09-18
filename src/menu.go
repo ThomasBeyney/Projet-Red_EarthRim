@@ -102,9 +102,14 @@ func main() {
 				CombTroll(&troll, &player)
 			case 3:
 				fmt.Println("A plus tard Combattant !")
-				return
+				break
 			default:
 			fmt.Println("Choix invalide, veuillez réessayer.")
+			}
+
+        if rep3 == 3 {
+            break
+        }
         }
 
 	}
