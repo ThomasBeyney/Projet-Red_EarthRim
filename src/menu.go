@@ -112,6 +112,7 @@ func main() {
 				switch rep3 {
 					case 1:
 						goblin := initGoblin()
+						fmt.Println("Le combat d'entrainement ce lance contre un gobelin")
 						CharacterTurn(&goblin, &player)
 					case 2:
 						rand.Seed(time.Now().UnixNano())
