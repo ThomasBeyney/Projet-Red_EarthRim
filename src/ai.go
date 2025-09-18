@@ -15,6 +15,7 @@ func goblinPattern(goblin *Monster, player *Character) {
 		var damage int
 		if player.Turn%3 == 0 {
 			damage = goblin.attaque * 2
+			fmt.Println(" ")
 			fmt.Println(goblin.Name, "utilise une attaque puissante !")
 		} else {
 			damage = goblin.attaque
@@ -25,11 +26,13 @@ func goblinPattern(goblin *Monster, player *Character) {
 			player.Hp = 0
 		}
 
+		fmt.Println(" ")
 		fmt.Println(goblin.Name, "inflige", damage, "dégâts à", player.Name)
 		fmt.Println("PV de", player.Name, ":", player.Hp, "/", player.MaxHp)
 		time.Sleep(1 * time.Second)
 
 		if player.Hp == 0 {
+			fmt.Println(" ")
 			fmt.Println(player.Name, "est K.O.")
 			time.Sleep(1 * time.Second)
 			isDead(player)
@@ -50,6 +53,7 @@ func trollPattern(Troll *Monster, player *Character) {
 		var damage int
 		if player.Turn%10 == 0 {
 			damage = Troll.attaque * 10
+			fmt.Println(" ")
 			fmt.Println(Troll.Name, "utilise une attaque MORTEL !")
 		} else {
 			damage = Troll.attaque
@@ -60,11 +64,13 @@ func trollPattern(Troll *Monster, player *Character) {
 			player.Hp = 0
 		}
 
+		fmt.Println(" ")
 		fmt.Println(Troll.Name, "inflige", damage, "dégâts à", player.Name)
 		fmt.Println("PV de", player.Name, ":", player.Hp, "/", player.MaxHp)
 		time.Sleep(1 * time.Second)
 
 		if player.Hp == 0 {
+			fmt.Println(" ")
 			fmt.Println(player.Name, "est K.O.")
 			time.Sleep(1 * time.Second)
 			isDead(player)
@@ -96,11 +102,13 @@ func loupPattern(Loup *Monster, player *Character) {
 			player.Hp = 0
 		}
 
+		fmt.Println(" ")
 		fmt.Println(Loup.Name, "inflige", damage, "dégâts à", player.Name)
 		fmt.Println("PV de", player.Name, ":", player.Hp, "/", player.MaxHp)
 		time.Sleep(1 * time.Second)
 
 		if player.Hp == 0 {
+			fmt.Println(" ")
 			fmt.Println(player.Name, "est K.O.")
 			time.Sleep(1 * time.Second)
 			isDead(player)
@@ -108,7 +116,9 @@ func loupPattern(Loup *Monster, player *Character) {
 		}
 
 		player.Turn += 1
-		CharacterTurn(Loup, player)
+		if !CombLoup(Loup, player){
+			return
+		}
 	}
 }
 
@@ -122,6 +132,7 @@ func orcPattern(Orc *Monster, player *Character) {
 		var damage int
 		if player.Turn%5 == 0 {
 			damage = Orc.attaque * 3
+			fmt.Println(" ")
 			fmt.Println(Orc.Name, "utilise une attaque puissante !")
 		} else {
 			damage = Orc.attaque
@@ -132,11 +143,13 @@ func orcPattern(Orc *Monster, player *Character) {
 			player.Hp = 0
 		}
 
+		fmt.Println(" ")
 		fmt.Println(Orc.Name, "inflige", damage, "dégâts à", player.Name)
 		fmt.Println("PV de", player.Name, ":", player.Hp, "/", player.MaxHp)
 		time.Sleep(1 * time.Second)
 
 		if player.Hp == 0 {
+			fmt.Println(" ")
 			fmt.Println(player.Name, "est K.O.")
 			time.Sleep(1 * time.Second)
 			isDead(player)
@@ -144,6 +157,8 @@ func orcPattern(Orc *Monster, player *Character) {
 		}
 
 		player.Turn += 1
-		CharacterTurn(Orc, player)
+		if !CombOrc(Orc, player){
+			return
+		}
 	}
 }
