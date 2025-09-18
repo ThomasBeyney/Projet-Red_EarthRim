@@ -3,7 +3,9 @@ package main
 import "fmt"
 
 func Marchand(c *Character) {
+	fmt.Println(" ")
 	fmt.Println("Bienvenue au Marchand")
+	fmt.Println(" ")
 	var rep int
 	var reponse string
 	var rep2 int
@@ -15,16 +17,19 @@ func Marchand(c *Character) {
 		fmt.Println("4- Voulez achetez des ressources ?")
 		fmt.Println("5- Voulez vous acheter un sac plus grand ?")
 		fmt.Println("6- Partir")
+		fmt.Println(" ")
 		fmt.Print("Choix : ")
 		fmt.Scanln(&rep)
 		switch rep {
 		case 1 :
+			fmt.Println(" ")
 			fmt.Print("Voulait vous vraiment achetez une potion de soin ? (coute 3 d'or)  oui/non ")
 			fmt.Scanln(&reponse)
 
 			if reponse == "oui" || reponse == "Oui" {
 				if c.Gold >= 3 {
 					if AddItem(c, "Potion") {
+						fmt.Println(" ")
 						fmt.Println("Vous payer 3 d'or")
 						fmt.Println("Vous obtenez une potion")
 						c.Gold -= 3
@@ -34,8 +39,10 @@ func Marchand(c *Character) {
 						fmt.Println("Vous n'avez pas assez d'or")
 					}
 			} else if reponse == "non" || reponse == "Non" {
+				fmt.Println(" ")
 				fmt.Println("Dommage, elle pourrait ètre utile")
 			} else {
+				fmt.Println(" ")
 				fmt.Println("Et bien, ce n'était pas ma question")
 			}
 		case 2 :
@@ -60,9 +67,11 @@ func Marchand(c *Character) {
 			}
 		case 3:
 		for {
+			fmt.Println(" ")
 			fmt.Println("Que voulez-vous acheter ?")
 			fmt.Println("1- Acheter le livre de Boule de feu")
 			fmt.Println("2- Revenir en arrière")
+			fmt.Println(" ")
 			fmt.Print("Choix : ")
 			fmt.Scanln(&rep2)
 
@@ -98,7 +107,9 @@ func Marchand(c *Character) {
 			}
 		case 4 :
 			for {
+				fmt.Println(" ")
 				fmt.Println("Que voulez vous achetez ?")
+				fmt.Println(" ")
 				fmt.Println("1-  Fourrure de Loup ")
 				fmt.Println("2-  Peau de Troll")
 				fmt.Println("3- Cuir de Sanglier")
@@ -108,6 +119,7 @@ func Marchand(c *Character) {
 				
 				switch rep3 {
 				case 1:
+					fmt.Println(" ")
 					fmt.Println("Voulez vous vraiment achetez une Fourrure de loup ? (pour 4 d'or) oui/non")
 					fmt.Scanln(&reponse)
 
@@ -129,6 +141,7 @@ func Marchand(c *Character) {
 						}
 						
 				case 2:
+					fmt.Println(" ")
 					fmt.Println("Voulez vous vraiment achetez une Peau de troll ? (pour 7 d'or) oui/non")
 					fmt.Scanln(&reponse)
 
@@ -150,6 +163,7 @@ func Marchand(c *Character) {
 						}
 
 				case 3: 
+					fmt.Println(" ")
 					fmt.Println("Voulez vous vraiment achetez une Cuir de sanglier ? (pour 3 d'or) oui/non")
 					fmt.Scanln(&reponse)
 
@@ -171,6 +185,7 @@ func Marchand(c *Character) {
 						}
 						
 				case 4:
+					fmt.Println(" ")
 					fmt.Println("Voulez vous vraiment achetez une Plume de corbeau ? (pour 1 d'or) oui/non")
 					fmt.Scanln(&reponse)
 
