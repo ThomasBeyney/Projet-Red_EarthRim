@@ -1,12 +1,18 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+    "math/rand"
+    "time"
+)
 
 
 func main() {
 	player :=  characterCreation()
 	goblin := initGoblin()
 	troll := initTroll()
+	loup := initLoup()
+	orc := initOrc()
 	fmt.Println("Bienvenue", player.Name, "tu as", player.Hp, "/", player.MaxHp, "hp")
 
 	var choice int
@@ -87,30 +93,41 @@ func main() {
 			Marchand(&player)
 		case 6:
 		var rep3 int
-	for {
-		fmt.Println("Que voulez-vous faire ?")
-        fmt.Println("1 - Combat d'entrainement")
-		fmt.Println("2 - Combat")
-        fmt.Println("3 - Revenir en arrière")
-        fmt.Print("Choix : ")
-        fmt.Scanln(&rep3)
+			for {
+				fmt.Println("Que voulez-vous faire ?")
+				fmt.Println("1 - Combat d'entrainement")
+				fmt.Println("2 - Combat")
+				fmt.Println("3 - Revenir en arrière")
+				fmt.Print("Choix : ")
+				fmt.Scanln(&rep3)
 
-		switch rep3 {
-			case 1:
-				CharacterTurn(&goblin, &player)
-			case 2:
-				CombTroll(&troll, &player)
-			case 3:
-				fmt.Println("A plus tard Combattant !")
-				break
-			default:
-			fmt.Println("Choix invalide, veuillez réessayer.")
-			}
+				switch rep3 {
+					case 1:
+						CharacterTurn(&goblin, &player)
+					case 2:
+						rand.Seed(time.Now().UnixNano())
+						n := rand.Intn(100)
+						f := rand.Float64()
+						if f < 61 {
+							CombLoup(&loup, &player)
+						}
+						else if f >= 61 && f < 91 {
+							CombOrc(&orc, &player)
+						}
+						else {
+							CombTroll(&troll, &player)
+						}
+					case 3:
+						fmt.Println("A plus tard Combattant !")
+						break
+					default:
+					fmt.Println("Choix invalide, veuillez réessayer.")
+					}
 
-        if rep3 == 3 {
-            break
-        }
-        }
+				if rep3 == 3 {
+					break
+				}
+				}
 
 		case 7:
 			fmt.Println("Au revoir !")
@@ -120,3 +137,5 @@ func main() {
 		}
 	}
 }
+
+
