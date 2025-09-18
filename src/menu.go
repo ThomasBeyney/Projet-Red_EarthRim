@@ -120,4 +120,4 @@ func main() {
 			fmt.Println("Choix invalide, veuillez réessayer.")
 		}
 	}
-}
+
