@@ -23,12 +23,15 @@ func characterCreation() Character {
 	valid := false
 
 	for !valid {
+		fmt.Println(" ")
 		fmt.Print("Quel est le nom de ton personnage ? ")
+		fmt.Println(" ")
 		fmt.Scanln(&name)
 
 		valid = true
 		for i := 0; i < len(name); i++ {
 			if !(name[i] >= 'A' && name[i] <= 'Z') && !(name[i] >= 'a' && name[i] <= 'z') {
+				fmt.Println(" ")
 				fmt.Println("Le nom ne doit contenir que des lettres.")
 				valid = false
 				break
@@ -65,10 +68,13 @@ func choixClasse() (string, int, int) {
 	valid := false
 
 	for !valid {
+		fmt.Println(" ")
 		fmt.Println("Quelle classe choisissez vous ?")
+		fmt.Println(" ")
 		fmt.Println("1- Humain")
 		fmt.Println("2- Elf")
 		fmt.Println("3- Nain")
+		fmt.Println(" ")
 		fmt.Print("Choix : ")
 		fmt.Scanln(&rep)
 
@@ -86,6 +92,7 @@ func choixClasse() (string, int, int) {
 			PVmax = 120
 			valid = true
 		default:
+			fmt.Println(" ")
 			fmt.Println("Choix invalide, veuillez réessayer.")
 		}
 	}
@@ -116,6 +123,7 @@ func initCharacter(name string, Classe string, PVmax int, PVactuel int) Characte
 }
 
 func displayInfo(c *Character) {
+	fmt.Println(" ")
 	fmt.Println("\n--- Infos du personnage ---")
 	fmt.Println("Nom :", c.Name)
 	fmt.Println("Classe :", c.Class)
