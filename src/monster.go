@@ -18,7 +18,7 @@ func initGoblin() Monster {
 
 func initTroll() Monster {
 	return Monster{
-		Name:    "Troll"
+		Name:    "Troll",
 		MaxHp:   80,
 		Hp:      80,
 		attaque: 10,
@@ -27,18 +27,18 @@ func initTroll() Monster {
 
 func initLoup() Monster {
 	return Monster{
-		Name:    "Loup"
-		MaxHp:   "25"
-		Hp:      "25"
-		attaque: "3"
+		Name:    "Loup",
+		MaxHp:   25,
+		Hp:      25,
+		attaque: 3,
 	}
 }
 
 func initOrc() Monster {
 	return Monster{
-		Name:    "Orc"
-		MaxHp:   "50"
-		Hp:      "50"
-		attaque: "5"
+		Name:    "Orc",
+		MaxHp:   50,
+		Hp:      50,
+		attaque: 5,
 	}
 }
