@@ -207,5 +207,5 @@ func CombTroll(Troll *Monster, player *Character) bool {
 			}
 		return false
 		}
-	return
+	return false
 }
