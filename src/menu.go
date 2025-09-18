@@ -9,10 +9,6 @@ import (
 
 func main() {
 	player :=  characterCreation()
-	goblin := initGoblin()
-	troll := initTroll()
-	loup := initLoup()
-	orc := initOrc()
 	fmt.Println("Bienvenue", player.Name, "tu as", player.Hp, "/", player.MaxHp, "hp")
 
 	var choice int
@@ -103,15 +99,19 @@ func main() {
 
 				switch rep3 {
 					case 1:
+						goblin := initGoblin()
 						CharacterTurn(&goblin, &player)
 					case 2:
 						rand.Seed(time.Now().UnixNano())
 						n := rand.Intn(100)
 						if n < 61 {
+							loup := initLoup()
 							CombLoup(&loup, &player)
 						} else if n >= 61 && n < 91 {
+							orc := initOrc()
 							CombOrc(&orc, &player)
 						} else {
+							troll := initTroll()
 							CombTroll(&troll, &player)
 						}
 					case 3:
