@@ -319,7 +319,7 @@ func CombLoup(Loup *Monster, player *Character) bool {
 
 
 
-func CombLoup(Orc *Monster, player *Character) bool {
+func CombOrc(Orc *Monster, player *Character) bool {
 	
 	
 	for player.Hp > 0 && Orc.Hp > 0 {
