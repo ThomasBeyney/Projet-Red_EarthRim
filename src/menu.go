@@ -110,11 +110,9 @@ func main() {
 						f := rand.Float64()
 						if f < 61 {
 							CombLoup(&loup, &player)
-						}
-						else if f >= 61 && f < 91 {
+						} else if f >= 61 && f < 91 {
 							CombOrc(&orc, &player)
-						}
-						else {
+						} else {
 							CombTroll(&troll, &player)
 						}
 					case 3:
