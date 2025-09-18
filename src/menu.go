@@ -118,12 +118,18 @@ func main() {
 						n := rand.Intn(100)
 						if n < 61 {
 							loup := initLoup()
+							fmt.Println(" ")
+							fmt.Println("Le combat ce lance contre un loup")
 							CombLoup(&loup, &player)
 						} else if n >= 61 && n < 91 {
 							orc := initOrc()
+							fmt.Println(" ")
+							fmt.Println("Le combat ce lance contre un orc")
 							CombOrc(&orc, &player)
 						} else {
 							troll := initTroll()
+							fmt.Println(" ")
+							fmt.Println("Un troll geant vous attaque, bonne chance aventurier !")
 							CombTroll(&troll, &player)
 						}
 					case 3:
