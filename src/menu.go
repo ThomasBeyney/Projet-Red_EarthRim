@@ -2,8 +2,9 @@ package main
 
 import "fmt"
 
+
 func main() {
-	player := characterCreation()
+	player :=  characterCreation()
 	goblin := initGoblin()
 	fmt.Println("Bienvenue", player.Name, "tu as", player.Hp, "/", player.MaxHp, "hp")
 
@@ -84,7 +85,28 @@ func main() {
 		case 5:
 			Marchand(&player)
 		case 6:
-			CharacterTurn(&goblin, &player)
+		var rep3 int
+	for {
+		fmt.Println("Que voulez-vous faire ?")
+        fmt.Println("1 - Combat d'entrainement")
+		fmt.Println("2 - Combat")
+        fmt.Println("3 - Revenir en arrière")
+        fmt.Print("Choix : ")
+        fmt.Scanln(&rep3)
+
+		switch rep3 {
+			case 1:
+				CharacterTurn(&goblin, &player)
+			case 2:
+				CombTroll(&Troll, &player)
+			case 3:
+				fmt.Println("A plus tard Combattant !")
+				return
+			default:
+			fmt.Println("Choix invalide, veuillez réessayer.")
+        }
+
+	}
 		case 7:
 			fmt.Println("Au revoir !")
 			return
