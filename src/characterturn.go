@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+    "math/rand"
+    "time"
+)
 
 
 func CharacterTurn(goblin *Monster, player *Character) {
@@ -136,15 +140,17 @@ func CombTroll(Troll *Monster, player *Character) bool {
     			if Troll.Hp == 0 {
         			fmt.Println("Le troll est vaincu !")
 					player.Exp += 100
+					player.Gold += 150
 					if player.Exp >= 100 {
 						player.Exp = 0
 						player.Level += 1
 						player.MaxHp += 15
 						fmt.Println(" ")
+						fmt.Println("Vous gagnez 150 d'or")
 						fmt.Println("Bravo ! Vous gagnez un Niveau")
 					} else {
 						fmt.Println(" ")
-						fmt.Println("Vous gagnez 100 points d'expériences")
+						fmt.Println("Vous gagnez 100 points d'expériences et 150 d'or")
 					}
         			return false
     			}
@@ -252,16 +258,20 @@ func CombLoup(Loup *Monster, player *Character) bool {
 
     			if Loup.Hp == 0 {
         			fmt.Println("Le loup est vaincu !")
+					rand.Seed(time.Now().UnixNano())
+					n := rand.Intn(25)
 					player.Exp += 15
+					player.Gold += n
 					if player.Exp >= 100 {
 						player.Exp = 0
 						player.Level += 1
 						player.MaxHp += 15
 						fmt.Println(" ")
+						fmt.Println("Vous gagnez",n,"d'or")
 						fmt.Println("Bravo ! Vous gagnez un Niveau")
 					} else {
 						fmt.Println(" ")
-						fmt.Println("Vous gagnez 15 points d'expériences")
+						fmt.Println("Vous gagnez 15 points d'expériences et",n,"d'or")
 					}
         			return false
     			}
@@ -368,16 +378,20 @@ func CombOrc(Orc *Monster, player *Character) bool {
 
     			if Orc.Hp == 0 {
         			fmt.Println("L'Orc est vaincu !")
+					rand.Seed(time.Now().UnixNano())
+					n := rand.Intn(60)
 					player.Exp += 45
+					player.Gold += n
 					if player.Exp >= 100 {
 						player.Exp = 0
 						player.Level += 1
 						player.MaxHp += 15
 						fmt.Println(" ")
+						fmt.Println("Vous gagnez",n,"d'or")
 						fmt.Println("Bravo ! Vous gagnez un Niveau")
 					} else {
 						fmt.Println(" ")
-						fmt.Println("Vous gagnez 45 points d'expériences")
+						fmt.Println("Vous gagnez 45 points d'expériences et",n,"d'or")
 					}
         			return false
     			}
