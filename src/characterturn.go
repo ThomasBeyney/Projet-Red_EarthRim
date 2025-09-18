@@ -108,7 +108,7 @@ func CharacterTurn(goblin *Monster, player *Character) {
 
 
 
-func CombTroll(Troll *Monster, player *Character) {
+func CombTroll(Troll *Monster, player *Character) bool {
 	
 	
 	for player.Hp > 0 && Troll.Hp > 0 {
@@ -135,13 +135,13 @@ func CombTroll(Troll *Monster, player *Character) {
 
     			if Troll.Hp == 0 {
         			fmt.Println("Le troll est vaincu !")
-        			return
+        			return false
     			}
 
 				trollPattern(Troll, player)
 
     			if player.Hp == 0 {
-        			return
+        			return false
     			}
 
 			case 3:
@@ -200,10 +200,11 @@ func CombTroll(Troll *Monster, player *Character) {
 
 			case 4:
 				fmt.Println("Au revoir !")
-				return
+				return false
 
 			default:
 				fmt.Println("Choix invalide, veuillez réessayer.")
 			}
+		return false
 		}
 }
