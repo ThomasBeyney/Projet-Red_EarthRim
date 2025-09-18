@@ -239,7 +239,7 @@ func CombLoup(Loup *Monster, player *Character) bool {
     			}
     			fmt.Println("Il reste", Loup.Hp, "/", Loup.MaxHp, "PV au Loup.")
 
-    			if Troll.Hp == 0 {
+    			if Loup.Hp == 0 {
         			fmt.Println("Le loup est vaincu !")
         			return false
     			}
