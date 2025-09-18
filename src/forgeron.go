@@ -23,6 +23,7 @@ func Forgeron(c *Character) {
 
 			if reponse == "oui" || reponse == "Oui" {
 
+				// pour la Plume de corbeau
 				plumeIndex := -1
 				for i, item := range c.Inventory {
 					if item == "Plume de corbeau" {
@@ -37,6 +38,7 @@ func Forgeron(c *Character) {
 				c.Inventory = append(c.Inventory[:plumeIndex], c.Inventory[plumeIndex+1:]...)
 				fmt.Println("Plume de Corbeau utilisée !")
 
+				// pour le Cuir de sanglier
 				cuirIndex := -1
 				for i, item := range c.Inventory {
 					if item == "Cuir de sanglier" {
@@ -74,6 +76,8 @@ func Forgeron(c *Character) {
 			fmt.Scanln(&reponse)
 
 			if reponse == "oui" || reponse == "Oui" {
+
+				//pour la Fourrure de loup
 				FourrureIndex := -1
 				for i, item := range c.Inventory {
 					if item == "Fourrure de loup" {
@@ -101,6 +105,7 @@ func Forgeron(c *Character) {
 				c.Inventory = append(c.Inventory[:FourrureIndex], c.Inventory[FourrureIndex+1:]...)
 				fmt.Println("Fourrure de loup utilisée !")
 
+				// pour la Peau de troll
 				PeauTrollIndex := -1
 				for i, item := range c.Inventory {
 					if item == "Peau de troll" {
@@ -137,6 +142,8 @@ func Forgeron(c *Character) {
 			fmt.Scanln(&reponse)
 
 			if reponse == "oui" || reponse == "Oui" {
+
+				//pour la Fourrure de loup
 				FourrureIndex := -1
 				for i, item := range c.Inventory {
 					if item == "Fourrure de loup" {
@@ -151,6 +158,7 @@ func Forgeron(c *Character) {
 				c.Inventory = append(c.Inventory[:FourrureIndex], c.Inventory[FourrureIndex+1:]...)
 				fmt.Println("Fourrure de loup utilisée !")
 
+				//pour le Cuir de sanglier
 				cuirIndex := -1
 				for i, item := range c.Inventory {
 					if item == "Cuir de sanglier" {
