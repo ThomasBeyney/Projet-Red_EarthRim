@@ -135,6 +135,17 @@ func CombTroll(Troll *Monster, player *Character) bool {
 
     			if Troll.Hp == 0 {
         			fmt.Println("Le troll est vaincu !")
+					player.Exp += 100
+					if player.Exp >= 100 {
+						player.Exp = 0
+						player.Level += 1
+						player.MaxHp += 15
+						fmt.Println(" ")
+						fmt.Println("Bravo ! Vous gagnez un Niveau")
+					} else {
+						fmt.Println(" ")
+						fmt.Println("Vous gagnez 100 points d'expériences")
+					}
         			return false
     			}
 
@@ -241,6 +252,17 @@ func CombLoup(Loup *Monster, player *Character) bool {
 
     			if Loup.Hp == 0 {
         			fmt.Println("Le loup est vaincu !")
+					player.Exp += 15
+					if player.Exp >= 100 {
+						player.Exp = 0
+						player.Level += 1
+						player.MaxHp += 15
+						fmt.Println(" ")
+						fmt.Println("Bravo ! Vous gagnez un Niveau")
+					} else {
+						fmt.Println(" ")
+						fmt.Println("Vous gagnez 15 points d'expériences")
+					}
         			return false
     			}
 
@@ -337,7 +359,7 @@ func CombOrc(Orc *Monster, player *Character) bool {
 				displayInfo(player)
 
 			case 2:
-    			fmt.Println("Vous attaquez le Orc !")
+    			fmt.Println("Vous attaquez l'Orc !")
     			Orc.Hp -= 5
     			if Orc.Hp < 0 {
         			Orc.Hp = 0
@@ -346,6 +368,17 @@ func CombOrc(Orc *Monster, player *Character) bool {
 
     			if Orc.Hp == 0 {
         			fmt.Println("L'Orc est vaincu !")
+					player.Exp += 45
+					if player.Exp >= 100 {
+						player.Exp = 0
+						player.Level += 1
+						player.MaxHp += 15
+						fmt.Println(" ")
+						fmt.Println("Bravo ! Vous gagnez un Niveau")
+					} else {
+						fmt.Println(" ")
+						fmt.Println("Vous gagnez 45 points d'expériences")
+					}
         			return false
     			}
 
