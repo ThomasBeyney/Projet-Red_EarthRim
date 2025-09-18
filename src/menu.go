@@ -32,6 +32,7 @@ func main() {
 			displayInfo(&player)
 			fmt.Println("--------------------------")
 		case 2:
+			fmt.Println(" ")
 			accessInventory(&player)
 		case 3:
 		var rep2 int
@@ -49,16 +50,19 @@ func main() {
         }
 
         if len(player.Inventory) == 0 {
+			fmt.Println(" ")
             fmt.Println("Votre inventaire est vide.")
             continue
         }
 
+		fmt.Println(" ")
         fmt.Println("=== Inventaire ===")
         for i, item := range player.Inventory {
             fmt.Println(i+1, "-", item)
         }
 
         var itemChoice int
+		fmt.Println(" ")
         fmt.Print("Quel objet voulez-vous utiliser ? ")
         fmt.Scanln(&itemChoice)
 
