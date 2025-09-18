@@ -6,6 +6,7 @@ import "fmt"
 func main() {
 	player :=  characterCreation()
 	goblin := initGoblin()
+	troll := initTroll()
 	fmt.Println("Bienvenue", player.Name, "tu as", player.Hp, "/", player.MaxHp, "hp")
 
 	var choice int
@@ -98,7 +99,7 @@ func main() {
 			case 1:
 				CharacterTurn(&goblin, &player)
 			case 2:
-				CombTroll(&Troll, &player)
+				CombTroll(&troll, &player)
 			case 3:
 				fmt.Println("A plus tard Combattant !")
 				return
