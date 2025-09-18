@@ -41,6 +41,7 @@ func AddItem(c *Character, item string) bool {
 
 func upgradeInventorySlot(c *Character) {
     if c.LimInventory >= 3 {
+		fmt.Println(" ")
         fmt.Println("Vous avez déjà atteint le nombre maximum d'augmentations.")
         return
     }

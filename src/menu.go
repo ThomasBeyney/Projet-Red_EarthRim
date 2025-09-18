@@ -1,13 +1,17 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+    "math/rand"
+    "time"
+)
 
 
 func main() {
 	player :=  characterCreation()
-	goblin := initGoblin()
-	troll := initTroll()
+	fmt.Println(" ")
 	fmt.Println("Bienvenue", player.Name, "tu as", player.Hp, "/", player.MaxHp, "hp")
+	fmt.Println(" ")
 
 	var choice int
 	for {
@@ -19,6 +23,7 @@ func main() {
 		fmt.Println("5 - Marchand")
 		fmt.Println("6 - Combat")
 		fmt.Println("7 - Quitter")
+		fmt.Println(" ")
 		fmt.Print("Choix : ")
 		fmt.Scanln(&choice)
 
@@ -27,13 +32,16 @@ func main() {
 			displayInfo(&player)
 			fmt.Println("--------------------------")
 		case 2:
+			fmt.Println(" ")
 			accessInventory(&player)
 		case 3:
 		var rep2 int
     for {
+		fmt.Println(" ")
         fmt.Println("Que voulez-vous faire ?")
         fmt.Println("1 - Voir Inventaire")
         fmt.Println("2 - Revenir en arrière")
+		fmt.Println(" ")
         fmt.Print("Choix : ")
         fmt.Scanln(&rep2)
 
@@ -42,20 +50,24 @@ func main() {
         }
 
         if len(player.Inventory) == 0 {
+			fmt.Println(" ")
             fmt.Println("Votre inventaire est vide.")
             continue
         }
 
+		fmt.Println(" ")
         fmt.Println("=== Inventaire ===")
         for i, item := range player.Inventory {
             fmt.Println(i+1, "-", item)
         }
 
         var itemChoice int
+		fmt.Println(" ")
         fmt.Print("Quel objet voulez-vous utiliser ? ")
         fmt.Scanln(&itemChoice)
 
         if itemChoice < 1 || itemChoice > len(player.Inventory) {
+			fmt.Println(" ")
             fmt.Println("Choix invalide.")
             continue
         }
@@ -87,32 +99,63 @@ func main() {
 			Marchand(&player)
 		case 6:
 		var rep3 int
-	for {
-		fmt.Println("Que voulez-vous faire ?")
-        fmt.Println("1 - Combat d'entrainement")
-		fmt.Println("2 - Combat")
-        fmt.Println("3 - Revenir en arrière")
-        fmt.Print("Choix : ")
-        fmt.Scanln(&rep3)
+			for {
+				fmt.Println(" ")
+				fmt.Println("Que voulez-vous faire ?")
+				fmt.Println("1 - Combat d'entrainement")
+				fmt.Println("2 - Combat")
+				fmt.Println("3 - Revenir en arrière")
+				fmt.Println(" ")
+				fmt.Print("Choix : ")
+				fmt.Scanln(&rep3)
 
-		switch rep3 {
-			case 1:
-				CharacterTurn(&goblin, &player)
-			case 2:
-				CombTroll(&troll, &player)
-			case 3:
-				fmt.Println("A plus tard Combattant !")
-				break
-			default:
-			fmt.Println("Choix invalide, veuillez réessayer.")
-        }
+				switch rep3 {
+					case 1:
+						goblin := initGoblin()
+						fmt.Println("Le combat d'entrainement ce lance contre un gobelin")
+						CharacterTurn(&goblin, &player)
+					case 2:
+						rand.Seed(time.Now().UnixNano())
+						n := rand.Intn(100)
+						if n < 61 {
+							loup := initLoup()
+							fmt.Println(" ")
+							fmt.Println("Le combat ce lance contre un loup")
+							CombLoup(&loup, &player)
+						} else if n >= 61 && n < 91 {
+							orc := initOrc()
+							fmt.Println(" ")
+							fmt.Println("Le combat ce lance contre un orc")
+							CombOrc(&orc, &player)
+						} else {
+							troll := initTroll()
+							fmt.Println(" ")
+							fmt.Println("Un troll geant vous attaque, bonne chance aventurier !")
+							CombTroll(&troll, &player)
+						}
+					case 3:
+						fmt.Println(" ")
+						fmt.Println("A plus tard Combattant !")
+						break
+					default:
+						fmt.Println(" ")
+					fmt.Println("Choix invalide, veuillez réessayer.")
+					}
 
-	}
+				if rep3 == 3 {
+					break
+				}
+				}
+
 		case 7:
+			fmt.Println(" ")
 			fmt.Println("Au revoir !")
 			return
 		default:
+			fmt.Println(" ")
 			fmt.Println("Choix invalide, veuillez réessayer.")
 		}
 	}
 }
+
+

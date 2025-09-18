@@ -3,7 +3,9 @@ package main
 import "fmt"
 
 func Marchand(c *Character) {
+	fmt.Println(" ")
 	fmt.Println("Bienvenue au Marchand")
+	fmt.Println(" ")
 	var rep int
 	var reponse string
 	var rep2 int
@@ -15,16 +17,19 @@ func Marchand(c *Character) {
 		fmt.Println("4- Voulez achetez des ressources ?")
 		fmt.Println("5- Voulez vous acheter un sac plus grand ?")
 		fmt.Println("6- Partir")
+		fmt.Println(" ")
 		fmt.Print("Choix : ")
 		fmt.Scanln(&rep)
 		switch rep {
 		case 1 :
+			fmt.Println(" ")
 			fmt.Print("Voulait vous vraiment achetez une potion de soin ? (coute 3 d'or)  oui/non ")
 			fmt.Scanln(&reponse)
 
-			if reponse == "oui" || reponse == "Oui" {
+			if reponse == "oui" || reponse == "Oui" || reponse == "OUI" {
 				if c.Gold >= 3 {
 					if AddItem(c, "Potion") {
+						fmt.Println(" ")
 						fmt.Println("Vous payer 3 d'or")
 						fmt.Println("Vous obtenez une potion")
 						c.Gold -= 3
@@ -33,16 +38,18 @@ func Marchand(c *Character) {
 					}} else {
 						fmt.Println("Vous n'avez pas assez d'or")
 					}
-			} else if reponse == "non" || reponse == "Non" {
+			} else if reponse == "non" || reponse == "Non" || reponse == "NON" {
+				fmt.Println(" ")
 				fmt.Println("Dommage, elle pourrait ètre utile")
 			} else {
+				fmt.Println(" ")
 				fmt.Println("Et bien, ce n'était pas ma question")
 			}
 		case 2 :
 			fmt.Print("Voulait vous vraiment achetez une potion de poison ? (coute 6 d'or) oui/non ")
 			fmt.Scanln(&reponse)
 
-			if reponse == "oui" || reponse == "Oui" {
+			if reponse == "oui" || reponse == "Oui" || reponse == "OUI" {
                 if c.Gold >= 6 {
 					if AddItem(c, "Potion-de-poison") {
 						fmt.Println("Vous payer 6 d'or")
@@ -53,16 +60,18 @@ func Marchand(c *Character) {
 					}} else {
 						fmt.Println("Vous n'avez pas assez d'or")
 					}
-			} else if reponse == "non" || reponse == "Non" {
+			} else if reponse == "non" || reponse == "Non" || reponse == "NON" {
 				fmt.Println("Dommage, elle pourrait ètre utile, ou mortel")
 			} else {
 				fmt.Println("Et bien, ce n'était pas ma question")
 			}
 		case 3:
 		for {
+			fmt.Println(" ")
 			fmt.Println("Que voulez-vous acheter ?")
 			fmt.Println("1- Acheter le livre de Boule de feu")
 			fmt.Println("2- Revenir en arrière")
+			fmt.Println(" ")
 			fmt.Print("Choix : ")
 			fmt.Scanln(&rep2)
 
@@ -71,7 +80,7 @@ func Marchand(c *Character) {
 					fmt.Print("Voulez-vous vraiment acheter le livre de boule de feu ? (coute 25 d'or) oui/non ")
 					fmt.Scanln(&reponse)
 
-					if reponse == "oui" || reponse == "Oui" {
+					if reponse == "oui" || reponse == "Oui" || reponse == "OUI" {
 						if c.Gold >= 25 {
 							if AddItem(c, "Livre de boule de feu") {
 								fmt.Println("Vous payer 25 d'or")
@@ -82,7 +91,7 @@ func Marchand(c *Character) {
 							}} else { 
 								fmt.Println("Vous n'avez pas assez d'or")
 							}
-					} else if reponse == "non" || reponse == "Non" {
+					} else if reponse == "non" || reponse == "Non" || reponse == "NON" {
 						fmt.Println("Dommage, il pourrait s'avérer très utile.")
 					} else {
 						fmt.Println("Eh bien, ce n'était pas ma question.")
@@ -98,7 +107,9 @@ func Marchand(c *Character) {
 			}
 		case 4 :
 			for {
+				fmt.Println(" ")
 				fmt.Println("Que voulez vous achetez ?")
+				fmt.Println(" ")
 				fmt.Println("1-  Fourrure de Loup ")
 				fmt.Println("2-  Peau de Troll")
 				fmt.Println("3- Cuir de Sanglier")
@@ -108,10 +119,11 @@ func Marchand(c *Character) {
 				
 				switch rep3 {
 				case 1:
+					fmt.Println(" ")
 					fmt.Println("Voulez vous vraiment achetez une Fourrure de loup ? (pour 4 d'or) oui/non")
 					fmt.Scanln(&reponse)
 
-					if reponse == "oui" || reponse == "Oui" {
+					if reponse == "oui" || reponse == "Oui" || reponse == "OUI" {
 						if c.Gold >= 4 {
 							if AddItem(c, "Fourrure de loup") {
 								fmt.Println("Vous payer 4 d'or")
@@ -122,17 +134,18 @@ func Marchand(c *Character) {
 							}} else {
 								fmt.Println("Vous n'avez pas assez d'or")
 							}
-						} else if reponse == "non" || reponse == "Non" {
+						} else if reponse == "non" || reponse == "Non" || reponse == "NON" {
 							fmt.Println("Dommage, elle pourrait s'avérer très utile.")
 						} else {
 							fmt.Println("Eh bien, ce n'était pas ma question.")
 						}
 						
 				case 2:
+					fmt.Println(" ")
 					fmt.Println("Voulez vous vraiment achetez une Peau de troll ? (pour 7 d'or) oui/non")
 					fmt.Scanln(&reponse)
 
-					if reponse == "oui" || reponse == "Oui" {
+					if reponse == "oui" || reponse == "Oui" || reponse == "OUI" {
 						if c.Gold >= 7 {
 							if AddItem(c, "Peau de troll") {
 								fmt.Println("Vous payer 7 d'or")
@@ -143,17 +156,18 @@ func Marchand(c *Character) {
 							}} else {
 								fmt.Println("Vous n'avez pas assez d'or")
 							}
-						} else if reponse == "non" || reponse == "Non" {
+						} else if reponse == "non" || reponse == "Non" || reponse == "NON" {
 							fmt.Println("Dommage, elle pourrait s'avérer très utile.")
 						} else {
 							fmt.Println("Eh bien, ce n'était pas ma question.")
 						}
 
 				case 3: 
+					fmt.Println(" ")
 					fmt.Println("Voulez vous vraiment achetez une Cuir de sanglier ? (pour 3 d'or) oui/non")
 					fmt.Scanln(&reponse)
 
-					if reponse == "oui" || reponse == "Oui" {
+					if reponse == "oui" || reponse == "Oui" || reponse == "OUI" {
 						if c.Gold >= 3 {
 							if AddItem(c, "Cuir de sanglier") {
 								fmt.Println("Vous payer 3 d'or")
@@ -164,17 +178,18 @@ func Marchand(c *Character) {
 							}} else {
 								fmt.Println("Vous n'avez pas assez d'or")
 							}
-						} else if reponse == "non" || reponse == "Non" {
+						} else if reponse == "non" || reponse == "Non" || reponse == "NON" {
 							fmt.Println("Dommage, elle pourrait s'avérer très utile.")
 						} else {
 							fmt.Println("Eh bien, ce n'était pas ma question.")
 						}
 						
 				case 4:
+					fmt.Println(" ")
 					fmt.Println("Voulez vous vraiment achetez une Plume de corbeau ? (pour 1 d'or) oui/non")
 					fmt.Scanln(&reponse)
 
-					if reponse == "oui" || reponse == "Oui" {
+					if reponse == "oui" || reponse == "Oui" || reponse == "OUI" {
 						if c.Gold >= 1 {
 							if AddItem(c, "Plume de corbeau") {
 								fmt.Println("Vous payer 1 d'or")
@@ -185,7 +200,7 @@ func Marchand(c *Character) {
 							}} else {
 								fmt.Println("Vous n'avez pas assez d'or")
 							}
-						} else if reponse == "non" || reponse == "Non" {
+						} else if reponse == "non" || reponse == "Non" || reponse == "NON" {
 							fmt.Println("Dommage, elle pourrait s'avérer très utile.")
 						} else {
 							fmt.Println("Eh bien, ce n'était pas ma question.")
@@ -203,7 +218,7 @@ func Marchand(c *Character) {
 			fmt.Println("Voulez vous vraiment achetez un sac plus grand ? (pour 30 d'or) oui/non")
 			fmt.Scanln(&reponse)
 
-			if reponse == "oui" || reponse == "Oui" {
+			if reponse == "oui" || reponse == "Oui" || reponse == "OUI" {
 				if c.Gold >= 30 {
 					if AddItem(c, "Grand sac") {
 						fmt.Println("Vous payer 30 d'or")
@@ -214,7 +229,7 @@ func Marchand(c *Character) {
 					}} else {
 						fmt.Println("Vous n'avez pas assez d'or")
 					}
-				} else if reponse == "non" || reponse == "Non" {
+				} else if reponse == "non" || reponse == "Non" || reponse == "NON" {
 					fmt.Println("Dommage, il pourrait s'avérer utile.")
 				} else {
 					fmt.Println("Eh bien, ce n'était pas ma question.")
