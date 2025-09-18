@@ -107,10 +107,9 @@ func main() {
 					case 2:
 						rand.Seed(time.Now().UnixNano())
 						n := rand.Intn(100)
-						f := rand.Float64()
-						if f < 61 {
+						if n < 61 {
 							CombLoup(&loup, &player)
-						} else if f >= 61 && f < 91 {
+						} else if n >= 61 && n < 91 {
 							CombOrc(&orc, &player)
 						} else {
 							CombTroll(&troll, &player)
