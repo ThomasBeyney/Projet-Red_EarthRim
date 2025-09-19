@@ -6,7 +6,7 @@ import (
 )
 
 
-func goblinPattern(goblin Monster, playerCharacter) {
+func goblinPattern(goblin *Monster, player *Character) {
 	for turn := 1; player.Hp > 0; turn++ {
 		if goblin.Hp <= 0 {
 			return
