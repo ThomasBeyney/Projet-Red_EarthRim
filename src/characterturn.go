@@ -13,90 +13,89 @@ func CharacterTurn(goblin *Monster, player *Character) bool {
 	for player.Hp > 0 && goblin.Hp > 0 {
     	var choice int
     	fmt.Println("\n=== Interface de combat ===")
+		fmt.Println("nom :",player.Name,"  Vie : ",player.Hp,"/",player.MaxHp, "   Mana : ",player.Mana,"/ 50")
     	fmt.Println("1 - Statistique")
-   		fmt.Println("2 - Attaquer")
-    	fmt.Println("3 - Quitter")
+		fmt.Println("2 - Attaque Basique ")
+   		fmt.Println("3 - Attaque Coup de poing (25 de mana)")
+		fmt.Println("4 - Attaque Boule de feu (50 de mana)")
+    	fmt.Println("5 - Quitter")
     	fmt.Print("Choix : ")
     	fmt.Scanln(&choice)
 
 		switch choice {
 			case 1:
 				displayInfo(player)
-
 			case 2:
-    			fmt.Println("Vous attaquez le gobelin !")
-    			goblin.Hp -= 5
-    			if goblin.Hp < 0 {
-        			goblin.Hp = 0
-    			}
-    			fmt.Println("Il reste", goblin.Hp, "/", goblin.MaxHp, "PV au gobelin.")
+				fmt.Println("Vous frappez le gobelin avec un coup de basique !")
+				goblin.Hp -= 5
+				if goblin.Hp < 0 {
+					goblin.Hp = 0
+				}
+				fmt.Println("Il reste", goblin.Hp, "/", goblin.MaxHp, "PV au gobelin.")
 
-    			if goblin.Hp == 0 {
-        			fmt.Println("Le gobelin est vaincu !")
-        			return false
-    			}
+				if goblin.Hp == 0 {
+					fmt.Println("Le gobelin est vaincu !")
+					return false
+				}
 
 				goblinPattern(goblin, player)
-
-    			if player.Hp == 0 {
-        			return false
-    			}
-
-			case 12:
-				var rep2 int
-				for {
-					fmt.Println("Que voulez-vous faire ?")
-					fmt.Println("1 - Voir Inventaire")
-					fmt.Println("2 - Revenir en arrière")
-					fmt.Print("Choix : ")
-					fmt.Scanln(&rep2)
-
-					if rep2 == 2 {
-						break
-					}
-
-					if len(player.Inventory) == 0 {
-						fmt.Println("Votre inventaire est vide.")
-						continue
-					}
-
-					fmt.Println("=== Inventaire ===")
-					for i, item := range player.Inventory {
-						fmt.Println(i+1, "-", item)
-					}
-
-					var itemChoice int
-					fmt.Print("Quel objet voulez-vous utiliser ? ")
-					fmt.Scanln(&itemChoice)
-
-					if itemChoice < 1 || itemChoice > len(player.Inventory) {
-						fmt.Println("Choix invalide.")
-						continue
-					}
-
-					selectedItem := player.Inventory[itemChoice-1]
-
-					switch selectedItem {
-					case "Potion":
-						takePot(player)
-					case "Potion-de-poison":
-						poison_pot(player)
-					case "Livre de boule de feu":
-						Spellbook(player)
-					case "Chapeau de l’aventurier":
-						EquipHat(player)
-					case "Tunique de l’aventurier":
-						EquipTors(player)
-					case "Bottes de l’aventurier":
-						EquipPie(player)
-					case "Grand sac":
-						upgradeInventorySlot(player)
-					default:	
-						fmt.Println("Cet objet ne peut pas être utilisé.")
-					}
+				if player.Hp == 0 {
+					return false
 				}
 
 			case 3:
+				if player.Mana >= 25 {
+					fmt.Println("Vous lancez un Coup de poing sur le gobelin !")
+					goblin.Hp -= 8
+					player.Mana -= 25
+					if goblin.Hp < 0 {
+						goblin.Hp = 0
+					}
+					fmt.Println("Il reste", goblin.Hp, "/", goblin.MaxHp, "PV au gobelin.")
+				} else {
+					fmt.Println(" ")
+					fmt.Println("Pas assez de Mana")
+					fmt.Println("Du au manque de mana, votre sort ne ce lance pas, l'ennemie a donc le temps de vous attaquer !")
+				}
+
+				if goblin.Hp == 0 {
+					fmt.Println("Le gobelin est vaincu !")
+					return false
+				}
+
+				goblinPattern(goblin, player)
+				if player.Hp == 0 {
+					return false
+				}
+
+			case 4:
+				if player.Mana >= 50 {
+					fmt.Println("Vous lancez une boule de feu sur le gobelin !")
+					goblin.Hp -= 18
+					player.Mana -= 50
+					if goblin.Hp < 0 {
+						goblin.Hp = 0
+					}
+					fmt.Println("Il reste", goblin.Hp, "/", goblin.MaxHp, "PV au gobelin.")
+				} else {
+					fmt.Println(" ")
+					fmt.Println("Pas assez de Mana")
+					fmt.Println("Du au manque de mana, votre sort ne ce lance pas, l'ennemie a donc le temps de vous attaquer !")
+				}
+
+				fmt.Println("Il reste", goblin.Hp, "/", goblin.MaxHp, "PV au gobelin.")
+
+				if goblin.Hp == 0 {
+					fmt.Println("Le gobelin est vaincu !")
+					return false
+				}
+
+				goblinPattern(goblin, player)
+				if player.Hp == 0 {
+					return false
+				}
+
+			case 5:
 				fmt.Println("Au revoir !")
 				return false
 
@@ -118,9 +117,12 @@ func CombTroll(Troll *Monster, player *Character) bool {
 	for player.Hp > 0 && Troll.Hp > 0 {
     	var choice int
     	fmt.Println("\n=== Interface de combat ===")
+		fmt.Println("nom :",player.Name,"  Vie : ",player.Hp,"/",player.MaxHp, "   Mana : ",player.Mana,"/ 50")
     	fmt.Println("1 - Statistique")
-   		fmt.Println("2 - Attaquer")
-    	fmt.Println("3 - Quitter")
+		fmt.Println("2 - Attaque Basique ")
+   		fmt.Println("3 - Attaque Coup de poing (25 de mana)")
+		fmt.Println("4 - Attaque Boule de feu (50 de mana)")
+    	fmt.Println("5 - Quitter")
     	fmt.Print("Choix : ")
     	fmt.Scanln(&choice)
 
@@ -129,7 +131,7 @@ func CombTroll(Troll *Monster, player *Character) bool {
 				displayInfo(player)
 
 			case 2:
-    			fmt.Println("Vous attaquez le Troll !")
+    			fmt.Println("Vous attaquez le Troll avec un coup basique !")
     			Troll.Hp -= 5
     			if Troll.Hp < 0 {
         			Troll.Hp = 0
@@ -159,62 +161,83 @@ func CombTroll(Troll *Monster, player *Character) bool {
     			if player.Hp == 0 {
         			return false
     			}
-
-			case 12:
-				var rep2 int
-				for {
-					fmt.Println("Que voulez-vous faire ?")
-					fmt.Println("1 - Voir Inventaire")
-					fmt.Println("2 - Revenir en arrière")
-					fmt.Print("Choix : ")
-					fmt.Scanln(&rep2)
-
-					if rep2 == 2 {
-						break
+			case 3:
+				if player.Mana >= 25 {
+					fmt.Println("Vous lancez un Coup de poing sur le troll !")
+					Troll.Hp -= 8
+					player.Mana -= 25
+					if Troll.Hp < 0 {
+						Troll.Hp = 0
 					}
-
-					if len(player.Inventory) == 0 {
-						fmt.Println("Votre inventaire est vide.")
-						continue
-					}
-
-					fmt.Println("=== Inventaire ===")
-					for i, item := range player.Inventory {
-						fmt.Println(i+1, "-", item)
-					}
-
-					var itemChoice int
-					fmt.Print("Quel objet voulez-vous utiliser ? ")
-					fmt.Scanln(&itemChoice)
-
-					if itemChoice < 1 || itemChoice > len(player.Inventory) {
-						fmt.Println("Choix invalide.")
-						continue
-					}
-
-					selectedItem := player.Inventory[itemChoice-1]
-
-					switch selectedItem {
-					case "Potion":
-						takePot(player)
-					case "Potion-de-poison":
-						poison_pot(player)
-					case "Livre de boule de feu":
-						Spellbook(player)
-					case "Chapeau de l’aventurier":
-						EquipHat(player)
-					case "Tunique de l’aventurier":
-						EquipTors(player)
-					case "Bottes de l’aventurier":
-						EquipPie(player)
-					case "Grand sac":
-						upgradeInventorySlot(player)
-					default:	
-						fmt.Println("Cet objet ne peut pas être utilisé.")
-					}
+					fmt.Println("Il reste", Troll.Hp, "/", Troll.MaxHp, "PV au Troll.")
+				} else {
+					fmt.Println(" ")
+					fmt.Println("Pas assez de Mana")
+					fmt.Println("Du au manque de mana, votre sort ne ce lance pas, l'ennemie a donc le temps de vous attaquer !")
 				}
 
-			case 3:
+    			if Troll.Hp == 0 {
+        			fmt.Println("Le troll est vaincu !")
+					player.Exp += 100
+					player.Gold += 150
+					if player.Exp >= 100 {
+						player.Exp = 0
+						player.Level += 1
+						player.MaxHp += 15
+						fmt.Println(" ")
+						fmt.Println("Vous gagnez 150 d'or")
+						fmt.Println("Bravo ! Vous gagnez un Niveau")
+					} else {
+						fmt.Println(" ")
+						fmt.Println("Vous gagnez 100 points d'expériences et 150 d'or")
+					}
+        			return false
+    			}
+
+				trollPattern(Troll, player)
+
+    			if player.Hp == 0 {
+        			return false
+    			}
+			case 4:
+				if player.Mana >= 50 {
+					fmt.Println("Vous lancez une boule de feu sur le troll !")
+					Troll.Hp -= 18
+					player.Mana -= 50
+					if Troll.Hp < 0 {
+						Troll.Hp = 0
+					}
+					fmt.Println("Il reste", Troll.Hp, "/", Troll.MaxHp, "PV au Troll.")
+				} else {
+					fmt.Println(" ")
+					fmt.Println("Pas assez de Mana")
+					fmt.Println("Du au manque de mana, votre sort ne ce lance pas, l'ennemie a donc le temps de vous attaquer !")
+				}
+
+    			if Troll.Hp == 0 {
+        			fmt.Println("Le troll est vaincu !")
+					player.Exp += 100
+					player.Gold += 150
+					if player.Exp >= 100 {
+						player.Exp = 0
+						player.Level += 1
+						player.MaxHp += 15
+						fmt.Println(" ")
+						fmt.Println("Vous gagnez 150 d'or")
+						fmt.Println("Bravo ! Vous gagnez un Niveau")
+					} else {
+						fmt.Println(" ")
+						fmt.Println("Vous gagnez 100 points d'expériences et 150 d'or")
+					}
+        			return false
+    			}
+
+				trollPattern(Troll, player)
+
+    			if player.Hp == 0 {
+        			return false
+    			}
+			case 5:
 				fmt.Println("Au revoir !")
 				return false
 
@@ -236,9 +259,12 @@ func CombLoup(Loup *Monster, player *Character) bool {
 	for player.Hp > 0 && Loup.Hp > 0 {
     	var choice int
     	fmt.Println("\n=== Interface de combat ===")
+		fmt.Println("nom :",player.Name,"  Vie : ",player.Hp,"/",player.MaxHp, "   Mana : ",player.Mana,"/ 50")
     	fmt.Println("1 - Statistique")
-   		fmt.Println("2 - Attaquer")
-    	fmt.Println("3 - Quitter")
+		fmt.Println("2 - Attaque Basique ")
+   		fmt.Println("3 - Attaque Coup de poing (25 de mana)")
+		fmt.Println("4 - Attaque Boule de feu (50 de mana)")
+    	fmt.Println("5 - Quitter")
     	fmt.Print("Choix : ")
     	fmt.Scanln(&choice)
 
@@ -247,7 +273,7 @@ func CombLoup(Loup *Monster, player *Character) bool {
 				displayInfo(player)
 
 			case 2:
-    			fmt.Println("Vous attaquez le Loup !")
+    			fmt.Println("Vous attaquez le Loup avec un coup basique !")
     			Loup.Hp -= 5
     			if Loup.Hp < 0 {
         			Loup.Hp = 0
@@ -279,62 +305,87 @@ func CombLoup(Loup *Monster, player *Character) bool {
     			if player.Hp == 0 {
         			return false
     			}
-
-			case 12:
-				var rep2 int
-				for {
-					fmt.Println("Que voulez-vous faire ?")
-					fmt.Println("1 - Voir Inventaire")
-					fmt.Println("2 - Revenir en arrière")
-					fmt.Print("Choix : ")
-					fmt.Scanln(&rep2)
-
-					if rep2 == 2 {
-						break
+			case 3:
+    			if player.Mana >= 25 {
+					fmt.Println("Vous lancez un Coup de poing sur le loup !")
+					Loup.Hp -= 8
+					player.Mana -= 25
+					if Loup.Hp < 0 {
+						Loup.Hp = 0
 					}
-
-					if len(player.Inventory) == 0 {
-						fmt.Println("Votre inventaire est vide.")
-						continue
-					}
-
-					fmt.Println("=== Inventaire ===")
-					for i, item := range player.Inventory {
-						fmt.Println(i+1, "-", item)
-					}
-
-					var itemChoice int
-					fmt.Print("Quel objet voulez-vous utiliser ? ")
-					fmt.Scanln(&itemChoice)
-
-					if itemChoice < 1 || itemChoice > len(player.Inventory) {
-						fmt.Println("Choix invalide.")
-						continue
-					}
-
-					selectedItem := player.Inventory[itemChoice-1]
-
-					switch selectedItem {
-					case "Potion":
-						takePot(player)
-					case "Potion-de-poison":
-						poison_pot(player)
-					case "Livre de boule de feu":
-						Spellbook(player)
-					case "Chapeau de l’aventurier":
-						EquipHat(player)
-					case "Tunique de l’aventurier":
-						EquipTors(player)
-					case "Bottes de l’aventurier":
-						EquipPie(player)
-					case "Grand sac":
-						upgradeInventorySlot(player)
-					default:	
-						fmt.Println("Cet objet ne peut pas être utilisé.")
-					}
+					fmt.Println("Il reste", Loup.Hp, "/", Loup.MaxHp, "PV au loup.")
+				} else {
+					fmt.Println(" ")
+					fmt.Println("Pas assez de Mana")
+					fmt.Println("Du au manque de mana, votre sort ne ce lance pas, l'ennemie a donc le temps de vous attaquer !")
 				}
 
-			case 3:
+    			if Loup.Hp == 0 {
+        			fmt.Println("Le loup est vaincu !")
+					rand.Seed(time.Now().UnixNano())
+					n := rand.Intn(25)
+					player.Exp += 15
+					player.Gold += n
+					if player.Exp >= 100 {
+						player.Exp = 0
+						player.Level += 1
+						player.MaxHp += 15
+						fmt.Println(" ")
+						fmt.Println("Vous gagnez",n,"d'or")
+						fmt.Println("Bravo ! Vous gagnez un Niveau")
+					} else {
+						fmt.Println(" ")
+						fmt.Println("Vous gagnez 15 points d'expériences et",n,"d'or")
+					}
+        			return false
+    			}
+
+				loupPattern(Loup, player)
+
+    			if player.Hp == 0 {
+        			return false
+    			}
+			case 4:
+    			if player.Mana >= 50 {
+					fmt.Println("Vous lancez une boule de feu sur le loup !")
+					Loup.Hp -= 18
+					player.Mana -= 50
+					if Loup.Hp < 0 {
+						Loup.Hp = 0
+					}
+					fmt.Println("Il reste", Loup.Hp, "/", Loup.MaxHp, "PV au Troll.")
+				} else {
+					fmt.Println(" ")
+					fmt.Println("Pas assez de Mana")
+					fmt.Println("Du au manque de mana, votre sort ne ce lance pas, l'ennemie a donc le temps de vous attaquer !")
+				}
+
+    			if Loup.Hp == 0 {
+        			fmt.Println("Le loup est vaincu !")
+					rand.Seed(time.Now().UnixNano())
+					n := rand.Intn(25)
+					player.Exp += 15
+					player.Gold += n
+					if player.Exp >= 100 {
+						player.Exp = 0
+						player.Level += 1
+						player.MaxHp += 15
+						fmt.Println(" ")
+						fmt.Println("Vous gagnez",n,"d'or")
+						fmt.Println("Bravo ! Vous gagnez un Niveau")
+					} else {
+						fmt.Println(" ")
+						fmt.Println("Vous gagnez 15 points d'expériences et",n,"d'or")
+					}
+        			return false
+    			}
+
+				loupPattern(Loup, player)
+
+    			if player.Hp == 0 {
+        			return false
+    			}
+			case 5:
 				fmt.Println("Au revoir !")
 				return false
 
@@ -355,10 +406,12 @@ func CombOrc(Orc *Monster, player *Character) bool {
 	for player.Hp > 0 && Orc.Hp > 0 {
     	var choice int
     	fmt.Println("\n=== Interface de combat ===")
+		fmt.Println("nom :",player.Name,"  Vie : ",player.Hp,"/",player.MaxHp, "   Mana : ",player.Mana,"/ 50")
     	fmt.Println("1 - Statistique")
-   		fmt.Println("2 - Attaquer")
-    	fmt.Println("3 - Inventaire")
-    	fmt.Println("4 - Quitter")
+		fmt.Println("2 - Attaque Basique ")
+   		fmt.Println("3 - Attaque Coup de poing (25 de mana)")
+		fmt.Println("4 - Attaque Boule de feu (50 de mana)")
+    	fmt.Println("5 - Quitter")
     	fmt.Print("Choix : ")
     	fmt.Scanln(&choice)
 
@@ -367,7 +420,7 @@ func CombOrc(Orc *Monster, player *Character) bool {
 				displayInfo(player)
 
 			case 2:
-    			fmt.Println("Vous attaquez l'Orc !")
+    			fmt.Println("Vous attaquez l'Orc avec une attaque basique !")
     			Orc.Hp -= 5
     			if Orc.Hp < 0 {
         			Orc.Hp = 0
@@ -401,60 +454,87 @@ func CombOrc(Orc *Monster, player *Character) bool {
     			}
 
 			case 3:
-				var rep2 int
-				for {
-					fmt.Println("Que voulez-vous faire ?")
-					fmt.Println("1 - Voir Inventaire")
-					fmt.Println("2 - Revenir en arrière")
-					fmt.Print("Choix : ")
-					fmt.Scanln(&rep2)
-
-					if rep2 == 2 {
-						break
+    			if player.Mana >= 25 {
+					fmt.Println("Vous lancez un Coup de poing sur le orc !")
+					Orc.Hp -= 8
+					player.Mana -= 25
+					if Orc.Hp < 0 {
+						Orc.Hp = 0
 					}
-
-					if len(player.Inventory) == 0 {
-						fmt.Println("Votre inventaire est vide.")
-						continue
-					}
-
-					fmt.Println("=== Inventaire ===")
-					for i, item := range player.Inventory {
-						fmt.Println(i+1, "-", item)
-					}
-
-					var itemChoice int
-					fmt.Print("Quel objet voulez-vous utiliser ? ")
-					fmt.Scanln(&itemChoice)
-
-					if itemChoice < 1 || itemChoice > len(player.Inventory) {
-						fmt.Println("Choix invalide.")
-						continue
-					}
-
-					selectedItem := player.Inventory[itemChoice-1]
-
-					switch selectedItem {
-					case "Potion":
-						takePot(player)
-					case "Potion-de-poison":
-						poison_pot(player)
-					case "Livre de boule de feu":
-						Spellbook(player)
-					case "Chapeau de l’aventurier":
-						EquipHat(player)
-					case "Tunique de l’aventurier":
-						EquipTors(player)
-					case "Bottes de l’aventurier":
-						EquipPie(player)
-					case "Grand sac":
-						upgradeInventorySlot(player)
-					default:	
-						fmt.Println("Cet objet ne peut pas être utilisé.")
-					}
+					fmt.Println("Il reste", Orc.Hp, "/", Orc.MaxHp, "PV au gobelin.")
+				} else {
+					fmt.Println(" ")
+					fmt.Println("Pas assez de Mana")
+					fmt.Println("Du au manque de mana, votre sort ne ce lance pas, l'ennemie a donc le temps de vous attaquer !")
 				}
 
+    			if Orc.Hp == 0 {
+        			fmt.Println("L'Orc est vaincu !")
+					rand.Seed(time.Now().UnixNano())
+					n := rand.Intn(60)
+					player.Exp += 45
+					player.Gold += n
+					if player.Exp >= 100 {
+						player.Exp = 0
+						player.Level += 1
+						player.MaxHp += 15
+						fmt.Println(" ")
+						fmt.Println("Vous gagnez",n,"d'or")
+						fmt.Println("Bravo ! Vous gagnez un Niveau")
+					} else {
+						fmt.Println(" ")
+						fmt.Println("Vous gagnez 45 points d'expériences et",n,"d'or")
+					}
+        			return false
+    			}
+
+				orcPattern(Orc, player)
+
+    			if player.Hp == 0 {
+        			return false
+    			}
 			case 4:
+    			if player.Mana >= 50 {
+					fmt.Println("Vous lancez une boule de feu sur le orc !")
+					Orc.Hp -= 18
+					player.Mana -= 50
+					if Orc.Hp < 0 {
+						Orc.Hp = 0
+					}
+					fmt.Println("Il reste", Orc.Hp, "/", Orc.MaxHp, "PV au Troll.")
+				} else {
+					fmt.Println(" ")
+					fmt.Println("Pas assez de Mana")
+					fmt.Println("Du au manque de mana, votre sort ne ce lance pas, l'ennemie a donc le temps de vous attaquer !")
+				}
+
+    			if Orc.Hp == 0 {
+        			fmt.Println("L'Orc est vaincu !")
+					rand.Seed(time.Now().UnixNano())
+					n := rand.Intn(60)
+					player.Exp += 45
+					player.Gold += n
+					if player.Exp >= 100 {
+						player.Exp = 0
+						player.Level += 1
+						player.MaxHp += 15
+						fmt.Println(" ")
+						fmt.Println("Vous gagnez",n,"d'or")
+						fmt.Println("Bravo ! Vous gagnez un Niveau")
+					} else {
+						fmt.Println(" ")
+						fmt.Println("Vous gagnez 45 points d'expériences et",n,"d'or")
+					}
+        			return false
+    			}
+
+				orcPattern(Orc, player)
+
+    			if player.Hp == 0 {
+        			return false
+    			}
+
+			case 5:
 				fmt.Println("Au revoir !")
 				return false
 
