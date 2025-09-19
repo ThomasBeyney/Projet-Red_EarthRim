@@ -80,11 +80,12 @@ func trollPattern(Troll *Monster, player *Character) {
 		}
 
 		player.Turn += 1
-		if !CombTroll(Troll, player){
+		if CombTroll(Troll, player) {
 			return
 		}
 	}
 }
+
 
 func loupPattern(Loup *Monster, player *Character) {
 	for turn := 1; player.Hp > 0; turn++ {
@@ -118,11 +119,12 @@ func loupPattern(Loup *Monster, player *Character) {
 		}
 
 		player.Turn += 1
-		if !CombLoup(Loup, player){
+		if CombLoup(Loup, player) {
 			return
 		}
 	}
 }
+
 
 
 func orcPattern(Orc *Monster, player *Character) {
@@ -159,7 +161,7 @@ func orcPattern(Orc *Monster, player *Character) {
 		}
 
 		player.Turn += 1
-		if !CombOrc(Orc, player){
+		if CombOrc(Orc, player) {
 			return
 		}
 	}
