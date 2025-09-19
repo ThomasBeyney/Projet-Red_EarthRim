@@ -40,6 +40,15 @@ func goblinPattern(goblin *Monster, player *Character) {
 		}
 
 		player.Turn += 1
+		if player.Mana <= 0 {
+			player.Mana = 0
+			player.Mana += 15
+		} else if player.Mana >= 35 {
+			player.Mana = 50
+		} else {
+			player.Mana += 15
+		}
+		
 		if !CharacterTurn(goblin, player) {
 			return
 		}
@@ -80,6 +89,15 @@ func trollPattern(Troll *Monster, player *Character) {
 		}
 
 		player.Turn += 1
+		if player.Mana <= 0 {
+			player.Mana = 0
+			player.Mana += 15
+		} else if player.Mana >= 35 {
+			player.Mana = 50
+		} else {
+			player.Mana += 15
+		}
+
 		if !CombTroll(Troll, player) {
 			return
 		}
@@ -119,6 +137,15 @@ func loupPattern(Loup *Monster, player *Character) {
 		}
 
 		player.Turn += 1
+		if player.Mana <= 0 {
+			player.Mana = 0
+			player.Mana += 15
+		} else if player.Mana >= 35 {
+			player.Mana = 50
+		} else {
+			player.Mana += 15
+		}
+
 		if !CombLoup(Loup, player) {
 			return
 		}
@@ -161,6 +188,15 @@ func orcPattern(Orc *Monster, player *Character) {
 		}
 
 		player.Turn += 1
+		if player.Mana <= 0 {
+			player.Mana = 0
+			player.Mana += 15
+		} else if player.Mana >= 35 {
+			player.Mana = 50
+		} else {
+			player.Mana += 15
+		}
+
 		if !CombOrc(Orc, player) {
 			return
 		}
