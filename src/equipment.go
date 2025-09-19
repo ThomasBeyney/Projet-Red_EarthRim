@@ -13,10 +13,10 @@ func EquipHat(c *Character) {
 		if item == "Chapeau de l’aventurier" {
 			if c.Equipement.Tete != "" {
 				c.Inventory = append(c.Inventory, c.Equipement.Tete)
-				c.Inventory = append(c.Inventory[:i], c.Inventory[i+1:]...)
-			c.Equipement.Tete = item
-			c.MaxHp += 10
+				c.Equipement.Tete = item
+				c.MaxHp += 10
 			}
+			c.Inventory = append(c.Inventory[:i], c.Inventory[i+1:]...)
 
 			fmt.Println("Chapeau de l’aventurier équipé !")
 			fmt.Println("Les points de vie max sont maintenant :", c.Hp, "/", c.MaxHp)
@@ -33,11 +33,11 @@ func EquipTors(c *Character) {
 		if item == "Tunique de l’aventurier" {
 			if c.Equipement.Torse != "" {
 				c.Inventory = append(c.Inventory, c.Equipement.Torse)
-				c.Inventory = append(c.Inventory[:i], c.Inventory[i+1:]...)
 				c.Equipement.Torse = item
 				c.MaxHp += 25
 
 			}
+			c.Inventory = append(c.Inventory[:i], c.Inventory[i+1:]...)
 
 			fmt.Println("Tunique de l’aventurier équipé !")
 			fmt.Println("Les points de vie max sont maintenant :", c.Hp, "/", c.MaxHp)
@@ -55,10 +55,10 @@ func EquipPie(c *Character) {
 		if item == "Bottes de l’aventurier" {
 			if c.Equipement.Pieds != "" {
 				c.Inventory = append(c.Inventory, c.Equipement.Pieds)
-				c.Inventory = append(c.Inventory[:i], c.Inventory[i+1:]...)
 				c.Equipement.Pieds = item
 				c.MaxHp += 15
 			}
+			c.Inventory = append(c.Inventory[:i], c.Inventory[i+1:]...)
 
 			fmt.Println("Bottes de l’aventurier équipé !")
 			fmt.Println("Les points de vie max sont maintenant :", c.Hp, "/", c.MaxHp)
