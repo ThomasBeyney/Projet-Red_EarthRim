@@ -40,10 +40,19 @@ func goblinPattern(goblin *Monster, player *Character) {
 		}
 
 		player.Turn += 1
-		if CharacterTurn(goblin, player) {
-            return
+		if player.Mana <= 0 {
+			player.Mana = 0
+			player.Mana += 15
+		} else if player.Mana >= 35 {
+			player.Mana = 50
+		} else {
+			player.Mana += 15
 		}
-	}
+
+		if !CharacterTurn(goblin, player) {
+			return
+		}
+}
 }
 
 func trollPattern(Troll *Monster, player *Character) {
