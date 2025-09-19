@@ -40,7 +40,9 @@ func goblinPattern(goblin *Monster, player *Character) {
 		}
 
 		player.Turn += 1
-		CharacterTurn(goblin, player)
+		if CharacterTurn(goblin, player) {
+			return // on quitte proprement
+		}
 	}
 }
 
