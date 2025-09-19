@@ -6,7 +6,7 @@ import (
 )
 
 
-func goblinPattern(goblin *Monster, player *Character) {
+func goblinPattern(goblin Monster, playerCharacter) {
 	for turn := 1; player.Hp > 0; turn++ {
 		if goblin.Hp <= 0 {
 			return
@@ -40,18 +40,6 @@ func goblinPattern(goblin *Monster, player *Character) {
 		}
 
 		player.Turn += 1
-		if player.Mana <= 0 {
-			player.Mana = 0
-			player.Mana += 15
-		} else if player.Mana >= 35 {
-			player.Mana = 50
-		} else {
-			player.Mana += 15
-		}
-		
-		if !CharacterTurn(goblin, player) {
-			return
-		}
 	}
 }
 
