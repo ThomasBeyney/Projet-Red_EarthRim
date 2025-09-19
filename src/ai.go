@@ -6,10 +6,10 @@ import (
 )
 
 
-func goblinPattern(goblin *Monster, player *Character) {
+func goblinPattern(goblin *Monster, player *Character) bool {
 	for turn := 1; player.Hp > 0; turn++ {
 		if goblin.Hp <= 0 {
-			return
+			return false
 		}
 
 		var damage int
@@ -36,14 +36,15 @@ func goblinPattern(goblin *Monster, player *Character) {
 			fmt.Println(player.Name, "est K.O.")
 			time.Sleep(1 * time.Second)
 			isDead(player)
-			return
+			return false
 		}
 
 		player.Turn += 1
 		if CharacterTurn(goblin, player) {
-			return // on quitte proprement
+			return true
 		}
 	}
+	return false
 }
 
 func trollPattern(Troll *Monster, player *Character) {
