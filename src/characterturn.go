@@ -7,109 +7,106 @@ import (
 )
 
 
-func CharacterTurn(goblin *Monster, player *Character) {
-	
-	
+func CharacterTurn(goblin *Monster, player *Character) bool {
+
 	for player.Hp > 0 && goblin.Hp > 0 {
-    	var choice int
-    	fmt.Println("\n=== Interface de combat ===")
-    	fmt.Println("1 - Statistique")
-   		fmt.Println("2 - Attaquer")
-    	fmt.Println("3 - Inventaire")
-    	fmt.Println("4 - Quitter")
-    	fmt.Print("Choix : ")
-    	fmt.Scanln(&choice)
+		var choice int
+		fmt.Println("\n=== Interface de combat ===")
+		fmt.Println("1 - Statistique")
+		fmt.Println("2 - Attaquer")
+		fmt.Println("3 - Inventaire")
+		fmt.Println("4 - Quitter")
+		fmt.Print("Choix : ")
+		fmt.Scanln(&choice)
 
 		switch choice {
-			case 1:
-				displayInfo(player)
+		case 1:
+			displayInfo(player)
 
-			case 2:
-    			fmt.Println("Vous attaquez le gobelin !")
-    			goblin.Hp -= 5
-    			if goblin.Hp < 0 {
-        			goblin.Hp = 0
-    			}
-    			fmt.Println("Il reste", goblin.Hp, "/", goblin.MaxHp, "PV au gobelin.")
+		case 2:
+			fmt.Println("Vous attaquez le gobelin !")
+			goblin.Hp -= 5
+			if goblin.Hp < 0 {
+				goblin.Hp = 0
+			}
+			fmt.Println("Il reste", goblin.Hp, "/", goblin.MaxHp, "PV au gobelin.")
 
-    			if goblin.Hp == 0 {
-        			fmt.Println("Le gobelin est vaincu !")
-        			return
-    			}
+			if goblin.Hp == 0 {
+				fmt.Println("Le gobelin est vaincu !")
+				return false
+			}
 
-				goblinPattern(goblin, player)
+			goblinPattern(goblin, player)
 
-    			if player.Hp == 0 {
-        			return
-    			}
+			if player.Hp == 0 {
+				return false
+			}
 
-			case 3:
+		case 3:
+			for {
 				var rep2 int
-				for {
-					fmt.Println("Que voulez-vous faire ?")
-					fmt.Println("1 - Voir Inventaire")
-					fmt.Println("2 - Revenir en arrière")
-					fmt.Print("Choix : ")
-					fmt.Scanln(&rep2)
+				fmt.Println("Que voulez-vous faire ?")
+				fmt.Println("1 - Voir Inventaire")
+				fmt.Println("2 - Revenir en arrière")
+				fmt.Print("Choix : ")
+				fmt.Scanln(&rep2)
 
-					if rep2 == 2 {
-						break
-					}
-
-					if len(player.Inventory) == 0 {
-						fmt.Println("Votre inventaire est vide.")
-						continue
-					}
-
-					fmt.Println("=== Inventaire ===")
-					for i, item := range player.Inventory {
-						fmt.Println(i+1, "-", item)
-					}
-
-					var itemChoice int
-					fmt.Print("Quel objet voulez-vous utiliser ? ")
-					fmt.Scanln(&itemChoice)
-
-					if itemChoice < 1 || itemChoice > len(player.Inventory) {
-						fmt.Println("Choix invalide.")
-						continue
-					}
-
-					selectedItem := player.Inventory[itemChoice-1]
-
-					switch selectedItem {
-					case "Potion":
-						takePot(player)
-					case "Potion-de-poison":
-						poison_pot(player)
-					case "Livre de boule de feu":
-						Spellbook(player)
-					case "Chapeau de l’aventurier":
-						EquipHat(player)
-					case "Tunique de l’aventurier":
-						EquipTors(player)
-					case "Bottes de l’aventurier":
-						EquipPie(player)
-					case "Grand sac":
-						upgradeInventorySlot(player)
-					default:	
-						fmt.Println("Cet objet ne peut pas être utilisé.")
-					}
+				if rep2 == 2 {
+					break
 				}
 
-			case 4:
-				fmt.Println("Au revoir !")
-				return
+				if len(player.Inventory) == 0 {
+					fmt.Println("Votre inventaire est vide.")
+					continue
+				}
 
-			default:
-				fmt.Println("Choix invalide, veuillez réessayer.")
+				fmt.Println("=== Inventaire ===")
+				for i, item := range player.Inventory {
+					fmt.Println(i+1, "-", item)
+				}
+
+				var itemChoice int
+				fmt.Print("Quel objet voulez-vous utiliser ? ")
+				fmt.Scanln(&itemChoice)
+
+				if itemChoice < 1 || itemChoice > len(player.Inventory) {
+					fmt.Println("Choix invalide.")
+					continue
+				}
+
+				selectedItem := player.Inventory[itemChoice-1]
+
+				switch selectedItem {
+				case "Potion":
+					takePot(player)
+				case "Potion-de-poison":
+					poison_pot(player)
+				case "Livre de boule de feu":
+					Spellbook(player)
+				case "Chapeau de l’aventurier":
+					EquipHat(player)
+				case "Tunique de l’aventurier":
+					EquipTors(player)
+				case "Bottes de l’aventurier":
+					EquipPie(player)
+				case "Grand sac":
+					upgradeInventorySlot(player)
+				default:
+					fmt.Println("Cet objet ne peut pas être utilisé.")
+				}
 			}
+
+		case 4:
+			fmt.Println("Au revoir !")
+			return true // <<< joueur quitte volontairement
+
+		default:
+			fmt.Println("Choix invalide, veuillez réessayer.")
+	
 		}
-	//goblinPattern(goblin, player)
+	}
+	return false
 }
-
-
-
 
 
 func CombTroll(Troll *Monster, player *Character) bool {
@@ -217,12 +214,11 @@ func CombTroll(Troll *Monster, player *Character) bool {
 
 			case 4:
 				fmt.Println("Au revoir !")
-				return false
+				return true
 
 			default:
 				fmt.Println("Choix invalide, veuillez réessayer.")
 			}
-		return false
 		}
 	return false
 }
@@ -338,12 +334,11 @@ func CombLoup(Loup *Monster, player *Character) bool {
 
 			case 4:
 				fmt.Println("Au revoir !")
-				return false
+				return true
 
 			default:
 				fmt.Println("Choix invalide, veuillez réessayer.")
 			}
-		return false
 		}
 	return false
 }
@@ -458,12 +453,11 @@ func CombOrc(Orc *Monster, player *Character) bool {
 
 			case 4:
 				fmt.Println("Au revoir !")
-				return false
+				return true
 
 			default:
 				fmt.Println("Choix invalide, veuillez réessayer.")
 			}
-		return false
 		}
 	return false
 }
